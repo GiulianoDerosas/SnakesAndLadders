@@ -1,9 +1,10 @@
 import './App.css';
+import Game from './containers/game.js'
 
 function App() {
   return (
     <div className="App">
-      <p>Hello World!</p>
+      <Game/>
     </div>
   );
 }

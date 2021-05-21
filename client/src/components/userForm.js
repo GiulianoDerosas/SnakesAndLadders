@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
-const userForm = () => {
+const UserForm = () => {
 
     const [formData, setFormData] = useState({})
 
-    const onChange = (event) {
+    const onChange = (event) => {
         formData[event.target.id] = event.target.value;
         setFormData(formData)
     }
@@ -30,4 +30,4 @@ const userForm = () => {
     )
 }
 
-export default userForm;
+export default UserForm;

@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 
@@ -16,6 +15,7 @@ MongoClient.connect('mongodb://localhost:27017')
     const taskCollection = db.collection('tasks');
     const taskRouter = createRouter(taskCollection);
     app.use(('/tasks'), taskRouter);
+  .then((client) => {})
 });
 
 app.listen(5000, function() {
