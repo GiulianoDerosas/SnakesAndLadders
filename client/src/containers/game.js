@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import UserForm from '../components/UserForm.js'
+import PlayerService from '../services/PlayerService'
 
 const Game = () => {
 
