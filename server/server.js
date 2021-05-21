@@ -13,7 +13,11 @@ MongoClient.connect('mongodb://localhost:27017')
   .then((client) => {
 
     // ADD DATABASE INFORMATION
+    // ADD DATABASE INFORMATION
+    // ADD DATABASE INFORMATION
 
-    app.listen(5000, function() {
-        console.log(`Server is now running`)})
+});
+
+app.listen(5000, function() {
+    console.log(`Server is now running`)
 });
