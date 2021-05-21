@@ -16,6 +16,12 @@ const Game = () => {
             .then(tasks => setTasks(tasks))
     }
 
+    const addUser = (user) => {
+        const tempUser = users.map(user => user);
+        tempUser.push(user);
+        setUsers(tempUser);
+    }
+
     return (
         <UserForm />
     )

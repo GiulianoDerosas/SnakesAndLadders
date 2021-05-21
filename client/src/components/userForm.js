@@ -11,7 +11,7 @@ const UserForm = () => {
 
     const onSubmit = (event) => {
         event.preventDefault()
-        postUser(formData)
+        postPlayers(formData)
         .then(data => addUser(data))
     }
 
