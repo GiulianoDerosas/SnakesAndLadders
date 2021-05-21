@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 
@@ -11,11 +12,10 @@ const createRouter = require('./helpers/create_router.js');
 
 MongoClient.connect('mongodb://localhost:27017')
   .then((client) => {
-
-    // ADD DATABASE INFORMATION
-    // ADD DATABASE INFORMATION
-    // ADD DATABASE INFORMATION
-
+    const db = client.db('snakes_and_ladders');
+    const taskCollection = db.collection('tasks');
+    const taskRouter = createRouter(taskCollection);
+    app.use(('/tasks'), taskRouter);
 });
 
 app.listen(5000, function() {
