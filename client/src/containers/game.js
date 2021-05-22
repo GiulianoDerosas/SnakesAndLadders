@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import GameBoard from '../components/GameBoard';
 
 const Game = () => {
 
@@ -31,7 +32,7 @@ const Game = () => {
     }
 
     return(
-        
+        <GameBoard />
     )
 
 }
