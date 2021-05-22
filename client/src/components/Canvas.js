@@ -13,7 +13,7 @@ const Canvas = () => {
     let direction = 1;
     const canvasRef = useRef([])
 
-    const draw = ctx => {
+    const drawBoard = ctx => {
         for (let index = 0; index < numRow * numRow; index++) {
             // add each tile to the array
             board.push({ xAxis, yAxis, tileSize, index });
@@ -44,10 +44,10 @@ const Canvas = () => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
         //Our first draw
-        draw(context)
+        drawBoard(context)
         // context.fillStyle = '#ebebeb'
         // context.fillRect(0, 0, context.canvas.width, context.canvas.height)
-    }, [draw])
+    }, [drawBoard])
 
     return <canvas width="500" height="500" ref={canvasRef} />
 }
