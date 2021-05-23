@@ -4,12 +4,14 @@ import Players from '../components/Players'
 
 const Game = () => {
 
-    const [tasks, setTasks] = useState([])
-    const [users, setUsers] = useState([])
+    
+
+    // const [tasks, setTasks] = useState([])
+    // const [users, setUsers] = useState([])
+    const [players, setPlayers] = useState([])
     const [roll, setRoll] = useState(0)
     const [playerCounter, setPlayerCounter] = useState(0)
-    const [livePlayer, setLivePlayer] = useState({}) //make this as state
-    // const [playerRoll, setPlayerRoll] = useState();
+    const [livePlayer, setLivePlayer] = useState({})
 
     const boardSize = 750;
     const tiles = 10;
@@ -18,7 +20,6 @@ const Game = () => {
     let xAxis = 0;
     let board = [];
     let direction = 1;
-    let players = []
     
     for (let index = 0; index < tiles * tiles; index++) {
         // add each tile to the array
@@ -31,40 +32,72 @@ const Game = () => {
             yAxis -= tileSize
         }
     }
-
     useEffect(() => {
-        startGame()
-    })
+        const initPlayers = []
 
-    const startGame = () => {
         let player_1 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
             index: 1 
         }
-        players.push(player_1)
+        initPlayers.push(player_1)
     
         let player_2 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
             index: 2
         }
-        players.push(player_2)
+        initPlayers.push(player_2)
     
         let player_3 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
             index: 3
         }
-        players.push(player_3)
+        initPlayers.push(player_3)
     
         let player_4 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
             index: 4
         }
-        players.push(player_4)
-    }
+        initPlayers.push(player_4)
+        setPlayers(initPlayers)
+    })
+
+    // const startGame = () => {
+
+    //     const initPlayers = []
+
+    //     let player_1 = {
+    //         xAxis: board[roll].xAxis,
+    //         yAxis: board[roll].yAxis,
+    //         index: 1 
+    //     }
+    //     initPlayers.push(player_1)
+    
+    //     let player_2 = {
+    //         xAxis: board[roll].xAxis,
+    //         yAxis: board[roll].yAxis,
+    //         index: 2
+    //     }
+    //     initPlayers.push(player_2)
+    
+    //     let player_3 = {
+    //         xAxis: board[roll].xAxis,
+    //         yAxis: board[roll].yAxis,
+    //         index: 3
+    //     }
+    //     initPlayers.push(player_3)
+    
+    //     let player_4 = {
+    //         xAxis: board[roll].xAxis,
+    //         yAxis: board[roll].yAxis,
+    //         index: 4
+    //     }
+    //     initPlayers.push(player_4)
+    //     setPlayers(initPlayers)
+    // }
     
     const rollDice = () => {
         setLivePlayer(players[playerCounter])
@@ -113,13 +146,14 @@ const Game = () => {
     //     .then(res => res.json())
     // }
 
-    const addUser = (user) => {
-        const tempUser = users.map(user => user);
-        tempUser.push(user);
-        setUsers(tempUser);
-    }
+    // const addUser = (user) => {
+    //     const tempUser = users.map(user => user);
+    //     tempUser.push(user);
+    //     setUsers(tempUser);
+    // }
 
-
+    console.log(players)
+    console.log(board)
 
     return(
         <>
