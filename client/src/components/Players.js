@@ -9,9 +9,10 @@ const Players = () => {
     const drawPlayers = ctx => {
 
         players.forEach(player => {
+            ctx.clearRect(0, 0, 750, 750);
             ctx.fillStyle = '#ff0000'
             ctx.beginPath()
-            ctx.arc(player.xAxis + 205, player.yAxis - 10, 25, 0, 2 * Math.PI)
+            ctx.arc(player.xAxis + 255, player.yAxis - 10, 25, 0, 2 * Math.PI)
             ctx.stroke()
         })
     }
