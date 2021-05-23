@@ -6,7 +6,8 @@ const Game = () => {
 
     const [tasks, setTasks] = useState([])
     const [users, setUsers] = useState([])
-    const [playerRoll, setPlayerRoll] = useState();
+    const [roll, setRoll] = useState(0)
+    // const [playerRoll, setPlayerRoll] = useState();
 
     const boardSize = 750;
     const tiles = 10;
@@ -15,7 +16,9 @@ const Game = () => {
     let xAxis = 0;
     let board = [];
     let direction = 1;
-    let roll = 0;
+    // let roll = 0;
+    let players = []
+    
 
     for (let index = 0; index < tiles * tiles; index++) {
         // add each tile to the array
@@ -28,32 +31,35 @@ const Game = () => {
             yAxis -= tileSize
         }
     }
-
-    console.log(board[10])
-
-    let players = []
+    let player_1 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 1 
+    }
+    players.push(player_1)
     
     const rollDice = () => {
         const max = 6
+        let updateRoll = roll
         let newroll = Math.ceil(Math.random() * max);
-        roll += newroll
+        updateRoll += newroll
+        setRoll(updateRoll)
         console.log(roll)
         console.log(newroll)
+        
+        
+        // console.log(player_1.xAxis)
+        // console.log(player_1.yAxis)
+        // setPlayerRoll(newroll)
+        updatePlayer()
+    }
+
+
+    const updatePlayer = () => {
         player_1.xAxis = board[roll].xAxis
         player_1.yAxis = board[roll].yAxis
-        console.log(player_1.xAxis)
-        console.log(player_1.yAxis)
-        setPlayerRoll(newroll)
     }
-
-    let player_1 = {
-        xAxis: board[roll].xAxis, 
-        yAxis: board[roll].yAxis, 
-        index: 1
-    }
-    players.push(player_1)
-
-
+    
     useEffect(() => {
         getTasks()
     })
@@ -86,7 +92,7 @@ const Game = () => {
             <GameBoard board={board} />
             <button onClick={rollDice} >Roll Dice</button>
             <Players players={players}/>
-            <p>Player rolls a: {playerRoll}</p>
+            {/* <p>Player rolls a: {playerRoll}</p> */}
         </>
     )
 
