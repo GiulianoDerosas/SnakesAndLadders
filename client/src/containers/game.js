@@ -7,6 +7,7 @@ const Game = () => {
     const [tasks, setTasks] = useState([])
     const [users, setUsers] = useState([])
     const [roll, setRoll] = useState(0)
+    const [currentPlayer, setCurrentPlayer] = useState(0)
     // const [playerRoll, setPlayerRoll] = useState();
 
     const boardSize = 750;
@@ -16,10 +17,8 @@ const Game = () => {
     let xAxis = 0;
     let board = [];
     let direction = 1;
-    // let roll = 0;
     let players = []
     
-
     for (let index = 0; index < tiles * tiles; index++) {
         // add each tile to the array
         board.push({ xAxis, yAxis, tileSize, index });
@@ -32,32 +31,54 @@ const Game = () => {
         }
     }
     let player_1 = {
-            xAxis: board[roll].xAxis,
-            yAxis: board[roll].yAxis,
-            index: 1 
+        xAxis: board[roll].xAxis,
+        yAxis: board[roll].yAxis,
+        index: 1 
     }
     players.push(player_1)
+
+    let player_2 = {
+        xAxis: board[roll].xAxis,
+        yAxis: board[roll].yAxis,
+        index: 2
+    }
+    players.push(player_2)
+
+    let player_3 = {
+        xAxis: board[roll].xAxis,
+        yAxis: board[roll].yAxis,
+        index: 3
+    }
+    players.push(player_3)
+
+    let player_4 = {
+        xAxis: board[roll].xAxis,
+        yAxis: board[roll].yAxis,
+        index: 4
+    }
+    players.push(player_4)
     
     const rollDice = () => {
         const max = 6
         let updateRoll = roll
+        let playerCounter = currentPlayer
         let newroll = Math.ceil(Math.random() * max);
         updateRoll += newroll
         setRoll(updateRoll)
-        console.log(roll)
-        console.log(newroll)
-        
-        
-        // console.log(player_1.xAxis)
-        // console.log(player_1.yAxis)
-        // setPlayerRoll(newroll)
-        updatePlayer()
+        updatePlayer(players[currentPlayer])
+        if (playerCounter === 3) {
+            playerCounter = 0
+            setCurrentPlayer(playerCounter)
+        } else {
+            playerCounter += 1
+            setCurrentPlayer(playerCounter)
+        }
     }
 
-
-    const updatePlayer = () => {
-        player_1.xAxis = board[roll].xAxis
-        player_1.yAxis = board[roll].yAxis
+    const updatePlayer = (player) => {
+        console.log(player)
+        player.xAxis = board[roll].xAxis
+        player.yAxis = board[roll].yAxis
     }
     
     useEffect(() => {
