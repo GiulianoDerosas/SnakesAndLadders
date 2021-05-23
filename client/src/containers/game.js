@@ -7,7 +7,8 @@ const Game = () => {
     const [tasks, setTasks] = useState([])
     const [users, setUsers] = useState([])
     const [roll, setRoll] = useState(0)
-    const [currentPlayer, setCurrentPlayer] = useState(0)
+    const [playerCounter, setPlayerCounter] = useState(0)
+    const [livePlayer, setLivePlayer] = useState({}) //make this as state
     // const [playerRoll, setPlayerRoll] = useState();
 
     const boardSize = 750;
@@ -30,79 +31,87 @@ const Game = () => {
             yAxis -= tileSize
         }
     }
-    let player_1 = {
-        xAxis: board[roll].xAxis,
-        yAxis: board[roll].yAxis,
-        index: 1 
-    }
-    players.push(player_1)
 
-    let player_2 = {
-        xAxis: board[roll].xAxis,
-        yAxis: board[roll].yAxis,
-        index: 2
-    }
-    players.push(player_2)
+    useEffect(() => {
+        startGame()
+    })
 
-    let player_3 = {
-        xAxis: board[roll].xAxis,
-        yAxis: board[roll].yAxis,
-        index: 3
+    const startGame = () => {
+        let player_1 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 1 
+        }
+        players.push(player_1)
+    
+        let player_2 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 2
+        }
+        players.push(player_2)
+    
+        let player_3 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 3
+        }
+        players.push(player_3)
+    
+        let player_4 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 4
+        }
+        players.push(player_4)
     }
-    players.push(player_3)
-
-    let player_4 = {
-        xAxis: board[roll].xAxis,
-        yAxis: board[roll].yAxis,
-        index: 4
-    }
-    players.push(player_4)
-
-    let livePlayer = players[currentPlayer]
     
     const rollDice = () => {
+        setLivePlayer(players[playerCounter])
         const max = 6
         let updateRoll = roll
-        let playerCounter = 0
         let newroll = Math.ceil(Math.random() * max);
+
+        // add if statement to stop player going past square 100
+
         updateRoll += newroll
         setRoll(updateRoll)
         updatePlayer()
-        if (playerCounter === 3) {
-            playerCounter = 0
-            setCurrentPlayer(playerCounter)
-        } else {
-            playerCounter += 1
-            setCurrentPlayer(playerCounter)
-        }
+        changePlayer()
     }
 
     const updatePlayer = () => {
-        // console.log(players[currentPlayer])
-        // console.log(players)
-        // console.log(currentPlayer)
+        console.log(livePlayer.xAxis)
         livePlayer.xAxis = board[roll].xAxis
         livePlayer.yAxis = board[roll].yAxis
     }
-    
-    useEffect(() => {
-        getTasks()
-    })
 
-    const getTasks = () => {
-        fetch('http://localhost:5000/tasks')
-            .then(res => res.json())
-            .then(tasks => setTasks(tasks))
+    const changePlayer = () => {
+        let counter = playerCounter
+        if (counter === 3) {
+            counter = 0
+            setPlayerCounter(counter)
+        } else {
+            counter += 1
+            setPlayerCounter(counter)
+        }
+        setLivePlayer(players[playerCounter])
     }
 
-    const postUser = (data) => {
-        return fetch('http://localhost:5000/USERS', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(res => res.json())
-    }
+    // const getTasks = () => {
+    //     fetch('http://localhost:5000/tasks')
+    //         .then(res => res.json())
+    //         .then(tasks => setTasks(tasks))
+    // }
+
+    // const postUser = (data) => {
+    //     return fetch('http://localhost:5000/USERS', {
+    //         method: 'POST',
+    //         body: JSON.stringify(data),
+    //         headers: { 'Content-Type': 'application/json' }
+    //     })
+    //     .then(res => res.json())
+    // }
 
     const addUser = (user) => {
         const tempUser = users.map(user => user);
@@ -114,9 +123,14 @@ const Game = () => {
 
     return(
         <>
-            <GameBoard board={board} />
-            <button onClick={rollDice} >Roll Dice</button>
-            <Players players={players}/>
+            <div>
+                <button onClick={rollDice} >Roll Dice</button>
+            </div>
+            <div>
+                <GameBoard board={board} />
+                <Players players={players}/>
+            </div>
+            
             {/* <p>Player rolls a: {playerRoll}</p> */}
         </>
     )
