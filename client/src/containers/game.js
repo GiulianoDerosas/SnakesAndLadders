@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import Dice from "../components/Dice"
+
 
 const Game = () => {
 
@@ -31,7 +33,9 @@ const Game = () => {
     }
 
     return(
-        
+        <>
+        <Dice/>
+        </>
     )
 
 }

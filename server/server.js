@@ -15,6 +15,9 @@ MongoClient.connect('mongodb://localhost:27017')
     const db = client.db('snakes_and_ladders');
     const taskCollection = db.collection('tasks');
     const taskRouter = createRouter(taskCollection);
+    const diceCollection = db.collection('dice');
+    const diceRouter = createRouter(diceCollection);
+    app.use(('/dice'), diceRouter);
     app.use(('/tasks'), taskRouter);
 });
 
