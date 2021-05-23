@@ -6,6 +6,7 @@ const Game = () => {
 
     const [tasks, setTasks] = useState([])
     const [users, setUsers] = useState([])
+    const [playerRoll, setPlayerRoll] = useState();
 
     const boardSize = 750;
     const tiles = 10;
@@ -14,7 +15,7 @@ const Game = () => {
     let xAxis = 0;
     let board = [];
     let direction = 1;
-    let roll = 0
+    let roll = 0;
 
     for (let index = 0; index < tiles * tiles; index++) {
         // add each tile to the array
@@ -38,9 +39,12 @@ const Game = () => {
         roll += newroll
         console.log(roll)
         console.log(newroll)
+        player_1.xAxis = board[roll].xAxis
+        player_1.yAxis = board[roll].yAxis
+        console.log(player_1.xAxis)
+        console.log(player_1.yAxis)
+        setPlayerRoll(newroll)
     }
-
-    console.log(roll)
 
     let player_1 = {
         xAxis: board[roll].xAxis, 
@@ -82,6 +86,7 @@ const Game = () => {
             <GameBoard board={board} />
             <button onClick={rollDice} >Roll Dice</button>
             <Players players={players}/>
+            <p>Player rolls a: {playerRoll}</p>
         </>
     )
 
