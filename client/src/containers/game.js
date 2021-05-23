@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import GameBoard from '../components/GameBoard';
+import Players from '../components/Players'
 
 const Game = () => {
 
@@ -32,7 +33,10 @@ const Game = () => {
     }
 
     return(
-        <GameBoard />
+        <>
+            <GameBoard />
+            <Players />
+        </>
     )
 
 }

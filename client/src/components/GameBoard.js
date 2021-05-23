@@ -23,9 +23,24 @@ const GameBoard = () => {
         }
     }
 
+    const drawBoard = ctx => {
+
+        board.forEach(tile => {
+            ctx.fillStyle = '#ebebeb'
+            ctx.beginPath()
+            ctx.strokeRect(tile.xAxis, tile.yAxis, tile.tileSize, tile.tileSize)
+            ctx.fill()
+            ctx.font = "15px Arial";
+            ctx.strokeText(`${tile.index + 1}`, tile.xAxis, tile.yAxis + 75);
+            // if (tile.occupied) 
+        })
+    }
+
+    let drawItem = drawBoard
+
     return (
 
-        <Canvas board={board}/>
+        <Canvas drawItem={drawItem} />
     )
 }
 
