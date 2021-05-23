@@ -11,7 +11,7 @@ const Players = ({players}) => {
             ctx.fillStyle = '#ff0000'
             ctx.arc(players[0].xAxis + 15, players[0].yAxis + 15, 10, 0, 2 * Math.PI)
             ctx.stroke()
-            ctx.fillStyle = '#1e81b0'
+            ctx.fillStyle = '#0099ff'
             ctx.fill()
             ctx.closePath()
 
@@ -35,7 +35,7 @@ const Players = ({players}) => {
             ctx.fillStyle = '#ff0000'
             ctx.arc(players[3].xAxis + 60, players[3].yAxis + 60, 10, 0, 2 * Math.PI)
             ctx.stroke()
-            ctx.fillStyle = '#ff3300'
+            ctx.fillStyle = '#cc00ff'
             ctx.fill()
             ctx.closePath()
     }

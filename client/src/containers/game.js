@@ -57,15 +57,17 @@ const Game = () => {
         index: 4
     }
     players.push(player_4)
+
+    let livePlayer = players[currentPlayer]
     
     const rollDice = () => {
         const max = 6
         let updateRoll = roll
-        let playerCounter = currentPlayer
+        let playerCounter = 0
         let newroll = Math.ceil(Math.random() * max);
         updateRoll += newroll
         setRoll(updateRoll)
-        updatePlayer(players[currentPlayer])
+        updatePlayer()
         if (playerCounter === 3) {
             playerCounter = 0
             setCurrentPlayer(playerCounter)
@@ -75,10 +77,12 @@ const Game = () => {
         }
     }
 
-    const updatePlayer = (player) => {
-        console.log(player)
-        player.xAxis = board[roll].xAxis
-        player.yAxis = board[roll].yAxis
+    const updatePlayer = () => {
+        // console.log(players[currentPlayer])
+        // console.log(players)
+        // console.log(currentPlayer)
+        livePlayer.xAxis = board[roll].xAxis
+        livePlayer.yAxis = board[roll].yAxis
     }
     
     useEffect(() => {
