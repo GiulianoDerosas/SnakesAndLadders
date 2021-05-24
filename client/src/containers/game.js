@@ -45,54 +45,62 @@ const Game = () => {
         let player_1 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
-            index: 1 
+            currentSquare: 0,
+            id: 1 
         }
         initPlayers.push(player_1)
 
         let player_2 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
-            index: 2
+            currentSquare: 0,
+            id: 2
         }
         initPlayers.push(player_2)
 
         let player_3 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
-            index: 3
+            currentSquare: 0,
+            id: 3
         }
         initPlayers.push(player_3)
 
         let player_4 = {
             xAxis: board[roll].xAxis,
             yAxis: board[roll].yAxis,
-            index: 4
+            currentSquare: 0,
+            id: 4
         }
         initPlayers.push(player_4)
         setPlayers(initPlayers)
+        setLivePlayer(initPlayers[0])
+
+        console.log(player_1.xAxis)
+        console.log (player_1.yAxis)
     }
 
 
 
     const rollDice = () => {
-        setLivePlayer(players[playerCounter])
+        // 
         const max = 6
-        let updateRoll = roll
         let newroll = Math.ceil(Math.random() * max);
 
         // add if statement to stop player going past square 100
 
-        updateRoll += newroll
-        setRoll(updateRoll)
+        setRoll(newroll)
         updatePlayer()
         changePlayer()
     }
 
     const updatePlayer = () => {
-        console.log(livePlayer.xAxis)
         let tempPlayer = livePlayer
-        tempPlayer.xAxis = board[roll].xAxis
-        tempPlayer.yAxis = board[roll].yAxis
+        console.log(tempPlayer)
+        let newPosition = tempPlayer.currentSquare + roll
+        tempPlayer.xAxis = board[newPosition].xAxis
+        tempPlayer.yAxis = board[newPosition].yAxis
+        tempPlayer.currentSquare = newPosition
         setLivePlayer(tempPlayer)
     }
 
