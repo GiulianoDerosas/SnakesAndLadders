@@ -12,3 +12,26 @@ db.tasks.insertMany([
         "task": "Can't use your hands to drink for a round"
     }
 ])
+
+db.players.insertMany([
+    {
+        "player": "1",
+        "name": "",
+        "counter": ""
+    },
+    {
+        "player": "2",
+        "name": "",
+        "counter": ""
+    },
+    {
+        "player": "3",
+        "name": "",
+        "counter": ""
+    },
+    {
+        "player": "4",
+        "name": "",
+        "counter": ""
+    }
+])
