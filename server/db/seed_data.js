@@ -1,4 +1,5 @@
 use snakes_and_ladders;
+
 db.dropDatabase();
 
 db.tasks.insertMany([

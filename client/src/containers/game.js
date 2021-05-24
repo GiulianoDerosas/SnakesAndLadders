@@ -151,7 +151,8 @@ const Game = () => {
             </div>
             <div>
                <p>{tasks[0].task}</p> 
-                {/* <Tasks tasks={tasks}/> */}
+                <Tasks tasks={tasks}/>
+                <button onClick={getTask}>Get Task</button>
             </div>
         </>
     )
