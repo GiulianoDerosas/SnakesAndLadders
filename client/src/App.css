@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+.canvas {
+  position: center;
+  left: 50px;
+  top: 50px;
+}
+
+.under-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100px;
+  width: 100px;
+  position: center;
+}

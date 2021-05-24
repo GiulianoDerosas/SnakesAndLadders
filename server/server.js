@@ -14,10 +14,10 @@ MongoClient.connect('mongodb://localhost:27017')
     const db = client.db('snakes_and_ladders');
     const taskCollection = db.collection('tasks');
     const taskRouter = createRouter(taskCollection);
-    const playerCollection = db.collection('players')
-    const playerRouter = createRouter(playerCollection)
-    app.use(('api/tasks'), taskRouter);
-    app.use(('api/players'), playerRouter)
+    app.use(('/tasks'), taskRouter);
+    const playerCollection = db.collection('players');
+    const playerRouter = createRouter(playerCollection);
+    app.use(('/players'), playerRouter);
 });
 
 app.listen(5000, function() {
