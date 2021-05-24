@@ -19,29 +19,29 @@ const Players = ({players}) => {
             ctx.fill()
             ctx.closePath()
 
-            ctx.beginPath()
-            ctx.fillStyle = '#ff0000'
-            ctx.arc(players[1].xAxis + 60, players[1].yAxis + 15, 10, 0, 2 * Math.PI)
-            ctx.stroke()
-            ctx.fillStyle = '#ffcc00'
-            ctx.fill()
-            ctx.closePath()
+            // ctx.beginPath()
+            // ctx.fillStyle = '#ff0000'
+            // ctx.arc(players[1].xAxis + 60, players[1].yAxis + 15, 10, 0, 2 * Math.PI)
+            // ctx.stroke()
+            // ctx.fillStyle = '#ffcc00'
+            // ctx.fill()
+            // ctx.closePath()
 
-            ctx.beginPath()
-            ctx.fillStyle = '#ff0000'
-            ctx.arc(players[2].xAxis + 15, players[2].yAxis + 60, 10, 0, 2 * Math.PI)
-            ctx.stroke()
-            ctx.fillStyle = '#00cc00'
-            ctx.fill()
-            ctx.closePath()
+            // ctx.beginPath()
+            // ctx.fillStyle = '#ff0000'
+            // ctx.arc(players[2].xAxis + 15, players[2].yAxis + 60, 10, 0, 2 * Math.PI)
+            // ctx.stroke()
+            // ctx.fillStyle = '#00cc00'
+            // ctx.fill()
+            // ctx.closePath()
             
-            ctx.beginPath()
-            ctx.fillStyle = '#ff0000'
-            ctx.arc(players[3].xAxis + 60, players[3].yAxis + 60, 10, 0, 2 * Math.PI)
-            ctx.stroke()
-            ctx.fillStyle = '#cc00ff'
-            ctx.fill()
-            ctx.closePath()
+            // ctx.beginPath()
+            // ctx.fillStyle = '#ff0000'
+            // ctx.arc(players[3].xAxis + 60, players[3].yAxis + 60, 10, 0, 2 * Math.PI)
+            // ctx.stroke()
+            // ctx.fillStyle = '#cc00ff'
+            // ctx.fill()
+            // ctx.closePath()
         } else {
             ctx.clearRect(0, 0, 750, 750);
             ctx.beginPath()

@@ -43,6 +43,7 @@ const Game = () => {
         players.push(newPlayer)
         setPlayers(tempArray)
         console.log(players)
+        setLivePlayer(players[0])
 
         // const initPlayers = []
 
@@ -77,8 +78,7 @@ const Game = () => {
         //     id: 4
         // }
         // initPlayers.push(player_4)
-        // setPlayers(initPlayers)
-        // setLivePlayer(initPlayers[0])
+        // 
 
         // console.log(player_1.xAxis)
         // console.log (player_1.yAxis)
@@ -109,8 +109,9 @@ const Game = () => {
     }
 
     const changePlayer = () => {
+        console.log(players)
         let counter = playerCounter
-        if (counter === 3) {
+        if (counter + 1 === players.length) {
             counter = 0
             setPlayerCounter(counter)
         } else {
@@ -133,7 +134,7 @@ const Game = () => {
     return (
         <>
             <div>
-                <button onClick={rollDice}></button>
+                <button onClick={rollDice}>Roll Dice</button>
             </div>
             <div>
                 <GameBoard board={board} />
