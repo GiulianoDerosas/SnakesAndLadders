@@ -1,12 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server:dev": "nodemon server.js",
-    "seeds": "mongo <./db/seed_data.js"
+    "seeds": "mongo <./db/seed_data.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,9 +15,10 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongodb": "^3.6.7"
+    "mongodb": "^3.6.8"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "description": ""
 }
