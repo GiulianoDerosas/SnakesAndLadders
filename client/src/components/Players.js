@@ -7,6 +7,8 @@ const Players = ({players}) => {
 
         if (players.length > 0 ) {
 
+            console.log(players)
+
             ctx.clearRect(0, 0, 750, 750);
             
             ctx.beginPath()
