@@ -33,39 +33,44 @@ const Game = () => {
         }
     }
 
-    // const startGame = () => {
+    useEffect(() => {
+        startGame()
 
-    //     const initPlayers = []
+    }, [])
 
-    //     let player_1 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 1 
-    //     }
-    //     initPlayers.push(player_1)
+    const startGame = () => {
 
-    //     let player_2 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 2
-    //     }
-    //     initPlayers.push(player_2)
+        const initPlayers = []
 
-    //     let player_3 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 3
-    //     }
-    //     initPlayers.push(player_3)
+        let player_1 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 1 
+        }
+        initPlayers.push(player_1)
 
-    //     let player_4 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 4
-    //     }
-    //     initPlayers.push(player_4)
-    //     setPlayers(initPlayers)
-    // }
+        let player_2 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 2
+        }
+        initPlayers.push(player_2)
+
+        let player_3 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 3
+        }
+        initPlayers.push(player_3)
+
+        let player_4 = {
+            xAxis: board[roll].xAxis,
+            yAxis: board[roll].yAxis,
+            index: 4
+        }
+        initPlayers.push(player_4)
+        setPlayers(initPlayers)
+    }
 
 
 
@@ -122,11 +127,14 @@ const Game = () => {
     return (
         <>
             <div>
+                <button onClick={rollDice}></button>
+            </div>
+            <div>
                 <GameBoard board={board} />
-                {/* <Players players={players} /> */}
+                <Players players={players} />
             </div>
             
-            <div className="under-board">
+            {/* <div className="under-board">
                 <div className="left-box">
                 <Dice/>
                 </div>
@@ -138,7 +146,7 @@ const Game = () => {
 
             <div>
             <PlayerList players={players}/>
-            </div>
+            </div> */}
         </>
     )
 

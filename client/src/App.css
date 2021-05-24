@@ -3,9 +3,10 @@
 }
 
 .canvas {
+  position: absolute;
   position: center;
   left: 50px;
-  top: 50px;
+  top: 150px;
 }
 
 .under-board {

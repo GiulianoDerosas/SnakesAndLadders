@@ -5,6 +5,8 @@ const Players = ({players}) => {
 
     const drawPlayers = ctx => {
 
+        if (players.length > 0 ) {
+
             ctx.clearRect(0, 0, 750, 750);
             
             ctx.beginPath()
@@ -38,6 +40,13 @@ const Players = ({players}) => {
             ctx.fillStyle = '#cc00ff'
             ctx.fill()
             ctx.closePath()
+        } else {
+            ctx.clearRect(0, 0, 750, 750);
+            ctx.beginPath()
+            ctx.fillStyle = 'rgba(255, 255, 255, 0)'
+            ctx.closePath()
+
+        }
     }
 
     // players.filter(player, stuff => index === 1)
