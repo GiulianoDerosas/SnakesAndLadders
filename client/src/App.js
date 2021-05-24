@@ -4,7 +4,7 @@ import Game from "./containers/game"
 function App() {
   return (
     <div className="App">
-      <p>Hello World!</p>
+      <p>Snakes and Ladders</p>
       <Game />
     </div>
   );

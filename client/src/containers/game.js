@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import GameBoard from '../components/GameBoard';
-import Players from '../components/Players'
+import Players from '../components/Players';
+import Dice from '../components/Dice';
+import PlayerForm from '../components/PlayerForm';
+import PlayerList from '../components/PlayerList';
 
 const Game = () => {
-
-    
-
-    // const [tasks, setTasks] = useState([])
-    // const [users, setUsers] = useState([])
+    const [tasks, setTasks] = useState([])
+    const [users, setUsers] = useState([])
     const [players, setPlayers] = useState([])
     const [roll, setRoll] = useState(0)
     const [playerCounter, setPlayerCounter] = useState(0)
@@ -20,7 +20,7 @@ const Game = () => {
     let xAxis = 0;
     let board = [];
     let direction = 1;
-    
+
     for (let index = 0; index < tiles * tiles; index++) {
         // add each tile to the array
         board.push({ xAxis, yAxis, tileSize, index });
@@ -32,38 +32,6 @@ const Game = () => {
             yAxis -= tileSize
         }
     }
-    useEffect(() => {
-        const initPlayers = []
-
-        let player_1 = {
-            xAxis: board[roll].xAxis,
-            yAxis: board[roll].yAxis,
-            index: 1 
-        }
-        initPlayers.push(player_1)
-    
-        let player_2 = {
-            xAxis: board[roll].xAxis,
-            yAxis: board[roll].yAxis,
-            index: 2
-        }
-        initPlayers.push(player_2)
-    
-        let player_3 = {
-            xAxis: board[roll].xAxis,
-            yAxis: board[roll].yAxis,
-            index: 3
-        }
-        initPlayers.push(player_3)
-    
-        let player_4 = {
-            xAxis: board[roll].xAxis,
-            yAxis: board[roll].yAxis,
-            index: 4
-        }
-        initPlayers.push(player_4)
-        setPlayers(initPlayers)
-    })
 
     // const startGame = () => {
 
@@ -75,21 +43,21 @@ const Game = () => {
     //         index: 1 
     //     }
     //     initPlayers.push(player_1)
-    
+
     //     let player_2 = {
     //         xAxis: board[roll].xAxis,
     //         yAxis: board[roll].yAxis,
     //         index: 2
     //     }
     //     initPlayers.push(player_2)
-    
+
     //     let player_3 = {
     //         xAxis: board[roll].xAxis,
     //         yAxis: board[roll].yAxis,
     //         index: 3
     //     }
     //     initPlayers.push(player_3)
-    
+
     //     let player_4 = {
     //         xAxis: board[roll].xAxis,
     //         yAxis: board[roll].yAxis,
@@ -98,7 +66,9 @@ const Game = () => {
     //     initPlayers.push(player_4)
     //     setPlayers(initPlayers)
     // }
-    
+
+
+
     const rollDice = () => {
         setLivePlayer(players[playerCounter])
         const max = 6
@@ -115,8 +85,10 @@ const Game = () => {
 
     const updatePlayer = () => {
         console.log(livePlayer.xAxis)
-        livePlayer.xAxis = board[roll].xAxis
-        livePlayer.yAxis = board[roll].yAxis
+        let tempPlayer = livePlayer
+        tempPlayer.xAxis = board[roll].xAxis
+        tempPlayer.yAxis = board[roll].yAxis
+        setLivePlayer(tempPlayer)
     }
 
     const changePlayer = () => {
@@ -131,44 +103,46 @@ const Game = () => {
         setLivePlayer(players[playerCounter])
     }
 
-    // const getTasks = () => {
-    //     fetch('http://localhost:5000/tasks')
-    //         .then(res => res.json())
-    //         .then(tasks => setTasks(tasks))
-    // }
+    const addPlayer = (newPlayer) =>{
+        const temp = players.map(player => player);
+        temp.push(newPlayer);
+        setPlayers(temp);
+        console.log(players);
+      }
 
-    // const postUser = (data) => {
-    //     return fetch('http://localhost:5000/USERS', {
-    //         method: 'POST',
-    //         body: JSON.stringify(data),
-    //         headers: { 'Content-Type': 'application/json' }
-    //     })
-    //     .then(res => res.json())
-    // }
-
-    // const addUser = (user) => {
-    //     const tempUser = users.map(user => user);
-    //     tempUser.push(user);
-    //     setUsers(tempUser);
-    // }
+      const getTasks = () => {
+        fetch('http://localhost:5000/tasks')
+            .then(res => res.json())
+            .then(tasks => setTasks(tasks))
+    }
 
     console.log(players)
     console.log(board)
 
-    return(
+    return (
         <>
             <div>
-                <button onClick={rollDice} >Roll Dice</button>
-            </div>
-            <div>
                 <GameBoard board={board} />
-                <Players players={players}/>
+                {/* <Players players={players} /> */}
             </div>
-            
-            {/* <p>Player rolls a: {playerRoll}</p> */}
+
+            <div className="dice-form">
+            <Dice/>
+            <PlayerForm addPlayer={addPlayer}/>
+            </div>
+
+            <div>
+            <PlayerList players={players}/>
+            </div>
         </>
     )
 
 }
 
 export default Game;
+
+// for (let index = 1; index < 4; index ++){
+//     initPlayers.push({xAxis, yAxis, index})
+//     xAxis = board[roll].xAxis
+//     yAxis = board[roll].yAxis
+// }

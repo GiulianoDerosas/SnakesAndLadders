@@ -3,7 +3,16 @@
 }
 
 .canvas {
-  position: absolute;
+  position: center;
   left: 50px;
-  top: 150px;
+  top: 50px;
+}
+
+.dice-form {
+  display: grid;
+  grid-template-rows: 50% 50%;
+  height: 100px;
+  width: 100px;
+  style: border-box;
+  border: 3px black;
 }

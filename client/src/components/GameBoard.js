@@ -3,7 +3,6 @@ import Canvas from "./Canvas"
 
 const GameBoard = ({board}) => {
 
-
     const drawBoard = ctx => {
 
         board.forEach(tile => {
