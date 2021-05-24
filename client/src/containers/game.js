@@ -110,11 +110,11 @@ const Game = () => {
         console.log(players);
       }
 
-      const getTasks = () => {
-        fetch('http://localhost:5000/tasks')
-            .then(res => res.json())
-            .then(tasks => setTasks(tasks))
-    }
+    //   const getTasks = () => {
+    //     fetch('http://localhost:5000/tasks')
+    //         .then(res => res.json())
+    //         .then(tasks => setTasks(tasks))
+    // }
 
     console.log(players)
     console.log(board)
@@ -125,10 +125,15 @@ const Game = () => {
                 <GameBoard board={board} />
                 {/* <Players players={players} /> */}
             </div>
+            
+            <div className="under-board">
+                <div className="left-box">
+                <Dice/>
+                </div>
 
-            <div className="dice-form">
-            <Dice/>
-            <PlayerForm addPlayer={addPlayer}/>
+                <div className="right-box">
+                <PlayerForm addPlayer={addPlayer}/>
+                </div>
             </div>
 
             <div>
