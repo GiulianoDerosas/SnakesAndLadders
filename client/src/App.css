@@ -8,11 +8,11 @@
   top: 50px;
 }
 
-.dice-form {
-  display: grid;
-  grid-template-rows: 50% 50%;
+.under-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   height: 100px;
   width: 100px;
-  style: border-box;
-  border: 3px black;
+  position: center;
 }
