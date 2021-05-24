@@ -10,6 +10,11 @@ const createRouter = function(collection) {
         .find()
         .toArray()
         .then((data) => res.json(data))
+        .catch((err) => {
+            console.error(err);
+            res.status(500);
+            res.json({ status: 500, error: err });
+          });
     });
 
     router.get('/:id', (req, res) => {

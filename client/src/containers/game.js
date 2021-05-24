@@ -4,6 +4,8 @@ import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
 import PlayerList from '../components/PlayerList';
+import GameService from '../services/GameService';
+import Tasks from '../components/Tasks';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
@@ -119,6 +121,14 @@ const Game = () => {
     console.log(players)
     console.log(board)
 
+    useEffect(() => {
+        GameService.getTasks()
+        .then(tasks => setTasks(tasks))
+        }, []
+    )
+
+    console.log('tasks', tasks)
+
     return (
         <>
             <div>
@@ -138,6 +148,10 @@ const Game = () => {
 
             <div>
             <PlayerList players={players}/>
+            </div>
+            <div>
+               <p>{tasks[0].task}</p> 
+                {/* <Tasks tasks={tasks}/> */}
             </div>
         </>
     )

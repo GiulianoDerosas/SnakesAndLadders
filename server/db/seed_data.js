@@ -6,7 +6,7 @@ db.tasks.insertMany([
         "task": "Take off your socks!"
     },
     {
-        "task": "Take your bra off!"
+        "task": "Take a drink"
     },
     {
         "task": "Can't use your hands to drink for a round"
