@@ -7,11 +7,10 @@ import PlayerList from '../components/PlayerList';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
-    const [users, setUsers] = useState([])
     const [players, setPlayers] = useState([])
-    const [roll, setRoll] = useState(0)
     const [playerCounter, setPlayerCounter] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
+    const [refresh, setRefresh] = useState(0)
 
     const boardSize = 750;
     const tiles = 10;
@@ -33,83 +32,30 @@ const Game = () => {
         }
     }
 
-    useEffect(() => {
-
-    }, [])
-
     const addPlayer = newPlayer => {
 
         let tempArray = players
         players.push(newPlayer)
         setPlayers(tempArray)
-        console.log(players)
         setLivePlayer(players[0])
-
-        // const initPlayers = []
-
-        // let player_1 = {
-        //     xAxis: board[roll].xAxis,
-        //     yAxis: board[roll].yAxis,
-        //     currentSquare: 0,
-        //     id: 1 
-        // }
-        // initPlayers.push(player_1)
-
-        // let player_2 = {
-        //     xAxis: board[roll].xAxis,
-        //     yAxis: board[roll].yAxis,
-        //     currentSquare: 0,
-        //     id: 2
-        // }
-        // initPlayers.push(player_2)
-
-        // let player_3 = {
-        //     xAxis: board[roll].xAxis,
-        //     yAxis: board[roll].yAxis,
-        //     currentSquare: 0,
-        //     id: 3
-        // }
-        // initPlayers.push(player_3)
-
-        // let player_4 = {
-        //     xAxis: board[roll].xAxis,
-        //     yAxis: board[roll].yAxis,
-        //     currentSquare: 0,
-        //     id: 4
-        // }
-        // initPlayers.push(player_4)
-        // 
-
-        // console.log(player_1.xAxis)
-        // console.log (player_1.yAxis)
+        let update = refresh + 1
+        setRefresh(update)
     }
 
-
-
-    const rollDice = () => {
-        // 
-        const max = 6
-        let newroll = Math.ceil(Math.random() * max);
-
-        // add if statement to stop player going past square 100
-
-        setRoll(newroll)
-        updatePlayer()
-        changePlayer()
+    const getRoll = (newRoll) => {
+        updatePlayer(newRoll)
     }
 
-    const updatePlayer = () => {
+    const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
         console.log(tempPlayer)
-        let newPosition = tempPlayer.currentSquare + roll
+        let newPosition = tempPlayer.currentSquare + newRoll
         tempPlayer.xAxis = board[newPosition].xAxis
         tempPlayer.yAxis = board[newPosition].yAxis
         tempPlayer.currentSquare = newPosition
         setLivePlayer(tempPlayer)
-    }
-
-    const changePlayer = () => {
-        console.log(players)
+        let update = refresh + 1
+        setRefresh(update)
         let counter = playerCounter
         if (counter + 1 === players.length) {
             counter = 0
@@ -121,38 +67,19 @@ const Game = () => {
         setLivePlayer(players[playerCounter])
     }
 
-    
-    //   const getTasks = () => {
-    //     fetch('http://localhost:5000/tasks')
-    //         .then(res => res.json())
-    //         .then(tasks => setTasks(tasks))
-    // }
-
-    console.log(players)
-    console.log(board)
-
     return (
         <>
-            <div>
-                <button onClick={rollDice}>Roll Dice</button>
-            </div>
+            <div><Dice getRoll = {getRoll}/></div>
+
             <div>
                 <GameBoard board={board} />
                 <Players players={players} />
             </div>
-            
-            <div className="under-board">
-                <div className="left-box">
-                <Dice/>
-                </div>
-
-                <div className="right-box">
-                <PlayerForm addPlayer={addPlayer}/>
-                </div>
-            </div>
 
             <div>
-            <PlayerList players={players}/>
+                <div className="left-box">
+                <PlayerForm addPlayer={addPlayer}/>
+                </div>
             </div>
         </>
     )
@@ -160,9 +87,3 @@ const Game = () => {
 }
 
 export default Game;
-
-// for (let index = 1; index < 4; index ++){
-//     initPlayers.push({xAxis, yAxis, index})
-//     xAxis = board[roll].xAxis
-//     yAxis = board[roll].yAxis
-// }

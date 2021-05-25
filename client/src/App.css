@@ -6,7 +6,7 @@
   position: absolute;
   position: center;
   left: 200px;
-  top: 150px;
+  top: 300px;
 }
 
 .under-board {
@@ -15,5 +15,5 @@
   justify-content: space-evenly;
   height: 100px;
   width: 100px;
-  position: center;
+  position: right 200px;
 }

@@ -1,27 +1,36 @@
 import { useState } from 'react';
+
 const PlayerForm = ({addPlayer}) => {
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
   const [xAxis] = useState(0)
   const [yAxis] = useState(675)
   const [currentSquare] = useState(0)
+  const [ID, setID] = useState(1)
 //   const [players, setPlayers] = useState([])
 
   const handleNameChange = (ev) => setName(ev.target.value);
   const handleColorChange = (ev) => setColor(ev.target.value);
 
   const handleSubmit = ev => {
+    
     ev.preventDefault();
-    addPlayer({
-      name: name,
-      color: color,
-      xAxis: xAxis,
-      yAxis: yAxis,
-      currentSquare: currentSquare
-    });
-
+    if (ID < 5) {
+      addPlayer({
+        id: ID,
+        name: name,
+        color: color,
+        xAxis: xAxis,
+        yAxis: yAxis,
+        currentSquare: currentSquare
+      });
+    let newID = ID + 1
+    setID(newID)
     setName("");
     setColor("");
+  } else {
+    window.alert("Maximum of 4 Players!");
+  }
   }
 
   return (
@@ -60,4 +69,5 @@ const PlayerForm = ({addPlayer}) => {
     </>
   )
 };
+
 export default PlayerForm;
