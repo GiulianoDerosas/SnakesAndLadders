@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 const PlayerForm = ({addPlayer}) => {
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
@@ -15,8 +15,8 @@ const PlayerForm = ({addPlayer}) => {
     addPlayer({
       name: name,
       color: color,
-      xAxis: xAxis,
-      yAxis: yAxis,
+      xAxis: 0,
+      yAxis: 675,
       currentSquare: currentSquare
     });
 
@@ -25,7 +25,7 @@ const PlayerForm = ({addPlayer}) => {
   }
 
   return (
-      <>
+      <div>
     <form onSubmit={handleSubmit}>
       <h3>Add a player</h3>
       <div className="form">
@@ -57,7 +57,7 @@ const PlayerForm = ({addPlayer}) => {
       </div>
       <input type="submit" name="submit" value="Save" />
     </form>
-    </>
+    </div>
   )
 };
 export default PlayerForm;

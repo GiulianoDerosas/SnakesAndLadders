@@ -1,4 +1,5 @@
 import Canvas from "./Canvas"
+import React from "react";
 
 const Players = ({players}) => {
     

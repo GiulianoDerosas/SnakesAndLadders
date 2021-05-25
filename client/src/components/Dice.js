@@ -20,13 +20,13 @@ const Dice = () => {
     }
 
 return (
-        <>
+        <div>
             <div className="dice">
                 <img className="dice-image" alt="" src=""/>
             </div>
             <p>You rolled a {rollValue}</p>
             <button onClick={onClick}>Roll Dice</button>
-        </>
+        </div>
     )
 
 }

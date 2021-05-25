@@ -4,6 +4,7 @@ import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
 import PlayerList from '../components/PlayerList';
+import RuleDisplay from '../components/RuleDisplay';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
@@ -132,7 +133,7 @@ const Game = () => {
     console.log(board)
 
     return (
-        <>
+        <React.Fragment>
             <div>
                 <button onClick={rollDice}>Roll Dice</button>
             </div>
@@ -142,19 +143,27 @@ const Game = () => {
             </div>
             
             <div className="under-board">
+                
                 <div className="left-box">
-                <Dice/>
+                    <Dice/>
                 </div>
 
+
                 <div className="right-box">
-                <PlayerForm addPlayer={addPlayer}/>
+                    <PlayerForm addPlayer={addPlayer}/>
                 </div>
+                
+                <div>
+                    <RuleDisplay/> 
+                </div>
+
             </div>
 
             <div>
             <PlayerList players={players}/>
             </div>
-        </>
+            
+        </React.Fragment>
     )
 
 }
