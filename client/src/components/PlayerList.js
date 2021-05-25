@@ -10,7 +10,7 @@ const PlayerList = ({players}) => {
 
     return(
         <div>
-            {playerList}
+            {/* {playerList} */}
         </div>
     )
 
