@@ -77,7 +77,7 @@ const Game = () => {
             const max = tasks.length
             const randomNumber = Math.floor(Math.random() * max);
             const task = tasks[randomNumber].task
-            setRandomTask(task)
+            setRandomTask(tasks[randomNumber].task)
             setRandomAction("")
             return task
         }
@@ -149,12 +149,11 @@ const Game = () => {
             </div>
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
-            <button className="nes-btn is-success">Rules</button></div>
             <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
+            <button className="nes-btn is-success">Rules</button></div>
         </div>
 
         <div className="task-button-container">
-            {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
             <button className="task-button" onClick={getRandomTask}>Click me: Task</button>
             <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
             <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
