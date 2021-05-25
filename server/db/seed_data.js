@@ -7,32 +7,35 @@ db.tasks.insertMany([
         "task": "Take a drink"
     },
     {
-        "task": "Nominate another player to drink"
-    },
-    {
         "task": "Take two drinks"
-    },
-    {
-        "task": "Finish your vessel"
-    },
-    {
-        "task": "Stand until your next turn is over"
     }, 
-    {
-        "task": "Can't use your hands to drink for a round"
-    },
     {
         "task": "Take three drinks"
     },
+])
+
+db.actions.insertMany([
     {
-        "task": "Take a shot"
+        "action": "Nominate another player to finish their vessel"
     },
     {
-        "task": "Nominate another player to finish their vessel"
+        "action": "Shotgun, last person takes a drink"
     },
     {
-        "task": "Shotgun, last person takes a drink"
-    }
+        "action": "Nominate another player to drink"
+    },
+    {
+        "action": "Finish your vessel"
+    },
+    {
+        "action": "Stand until your next turn is over"
+    },
+    {
+        "action": "Can't use your hands to drink for a round"
+    },
+    {
+        "action": "Take a shot"
+    },
 ])
 
 db.drinks.insertMany([
