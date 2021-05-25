@@ -32,7 +32,7 @@ const PlayerForm = ({addPlayer}) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <div className="add-player-container">
         <form className="add-player" onSubmit={handleSubmit}>
           <h3 className="nes-text is-primary">Add a player</h3>
@@ -70,7 +70,7 @@ const PlayerForm = ({addPlayer}) => {
           <input type="submit" className="nes-btn is-primary" name="submit" value="Save" />
         </form>
       </div>
-    </>
+    </React.Fragment>
   )
 };
 

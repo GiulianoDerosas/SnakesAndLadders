@@ -4,12 +4,9 @@ import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
 import PlayerList from '../components/PlayerList';
-<<<<<<< HEAD
 import RuleDisplay from '../components/RuleDisplay';
-=======
 import GameService from '../services/GameService';
 import Tasks from '../components/Tasks';
->>>>>>> 9a72485adc35e6f7c4d55e9357c0ff45fe95b868
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
@@ -91,7 +88,7 @@ const Game = () => {
     )
 
     return (
-        <>
+        <React.Fragment>
         <div className="main-wrapper">
 
             <div><PlayerForm addPlayer={addPlayer}/></div>
@@ -101,7 +98,7 @@ const Game = () => {
             <Players players={players}/></div>
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
-            <button className="nes-btn is-success">Rules</button></div>
+            <RuleDisplay className="nes-btn is-success" /></div>
         </div>
 
         <div className="task-button-container">
@@ -114,7 +111,7 @@ const Game = () => {
         <div>
             {/* <Actions randomAction={randomAction} /> */}
         </div>
-        </>
+        </React.Fragment>
     )
 
 }
