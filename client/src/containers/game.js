@@ -90,7 +90,6 @@ const Game = () => {
         if (tasks.length > 0) {
             const max = tasks.length
             const randomNumber = Math.floor(Math.random() * max);
-            console.log(tasks[randomNumber].task)
             const task = tasks[randomNumber].task
             setRandomTask(task)
             return task
@@ -167,6 +166,9 @@ const Game = () => {
                 <button onClick={getRandomTask}>Click me</button>
                 {/* <p>{randomTask}</p> */}
                 <Tasks randomTask={randomTask} />
+            </div>
+            <div>
+                {/* <Actions randomAction={randomAction} /> */}
             </div>
         </>
     )
