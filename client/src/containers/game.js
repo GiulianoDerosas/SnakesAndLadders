@@ -120,12 +120,12 @@ const Game = () => {
 
             <div><PlayerForm addPlayer={addPlayer}/></div>
 
-
             <div className="board"><GameBoard board={board} />
             <Players players={players}/></div>
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
             <button className="nes-btn is-success">Rules</button></div>
+            {/* <button>Refresh</button> */}
         </div>
 
         <div className="task-button-container">
@@ -135,9 +135,9 @@ const Game = () => {
             <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
         </div>
 
-        <div className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/></div>
-
-        {/* <div className="task-button-container"><Actions randomAction={randomAction}/></div> */}
+        <div 
+        className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
+        </div>
         </>
     )
 
