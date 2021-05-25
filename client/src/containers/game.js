@@ -75,6 +75,12 @@ const Game = () => {
         }
     }
 
+    const getNoTask = () => {
+        setRandomTask("")
+        setRandomAction("")
+        return ("")
+    }
+
     const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
         console.log(tempPlayer)
@@ -125,8 +131,8 @@ const Game = () => {
         <div className="task-button-container">
             {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
             <button className="task-button" onClick={getRandomTask}>Click me: Drink</button>
-            <br />
             <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
+            <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
         </div>
 
         <div className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/></div>
