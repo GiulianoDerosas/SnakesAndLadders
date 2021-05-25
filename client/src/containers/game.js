@@ -9,12 +9,11 @@ import Tasks from '../components/Tasks';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
-    const [users, setUsers] = useState([])
     const [players, setPlayers] = useState([])
-    const [roll, setRoll] = useState(0)
     const [playerCounter, setPlayerCounter] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
     const [randomTask, setRandomTask] = useState(null)
+    const [refresh, setRefresh] = useState(0)
     
     const boardSize = 750;
     const tiles = 10;
@@ -36,54 +35,18 @@ const Game = () => {
         }
     }
 
-    // const startGame = () => {
+    const addPlayer = newPlayer => {
 
-    //     const initPlayers = []
+        let tempArray = players
+        players.push(newPlayer)
+        setPlayers(tempArray)
+        setLivePlayer(players[0])
+        let update = refresh + 1
+        setRefresh(update)
+    }
 
-    //     let player_1 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 1 
-    //     }
-    //     initPlayers.push(player_1)
-
-    //     let player_2 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 2
-    //     }
-    //     initPlayers.push(player_2)
-
-    //     let player_3 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 3
-    //     }
-    //     initPlayers.push(player_3)
-
-    //     let player_4 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 4
-    //     }
-    //     initPlayers.push(player_4)
-    //     setPlayers(initPlayers)
-    // }
-
-
-
-    const rollDice = () => {
-        setLivePlayer(players[playerCounter])
-        const max = 6
-        let updateRoll = roll
-        let newroll = Math.ceil(Math.random() * max);
-
-        // add if statement to stop player going past square 100
-
-        updateRoll += newroll
-        setRoll(updateRoll)
-        updatePlayer()
-        changePlayer()
+    const getRoll = (newRoll) => {
+        updatePlayer(newRoll)
     }
 
     const getRandomTask = () => {
@@ -97,17 +60,18 @@ const Game = () => {
     }
     // conditional on index position. if even or odd / % 0 or not
 
-    const updatePlayer = () => {
-        console.log(livePlayer.xAxis)
+    const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
-        tempPlayer.xAxis = board[roll].xAxis
-        tempPlayer.yAxis = board[roll].yAxis
+        console.log(tempPlayer)
+        let newPosition = tempPlayer.currentSquare + newRoll
+        tempPlayer.xAxis = board[newPosition].xAxis
+        tempPlayer.yAxis = board[newPosition].yAxis
+        tempPlayer.currentSquare = newPosition
         setLivePlayer(tempPlayer)
-    }
-
-    const changePlayer = () => {
+        let update = refresh + 1
+        setRefresh(update)
         let counter = playerCounter
-        if (counter === 3) {
+        if (counter + 1 === players.length) {
             counter = 0
             setPlayerCounter(counter)
         } else {
@@ -117,50 +81,27 @@ const Game = () => {
         setLivePlayer(players[playerCounter])
     }
 
-    const addPlayer = (newPlayer) =>{
-        const temp = players.map(player => player);
-        temp.push(newPlayer);
-        setPlayers(temp);
-        // console.log(players);
-      }
-
-    //   const getTasks = () => {
-    //     fetch('http://localhost:5000/tasks')
-    //         .then(res => res.json())
-    //         .then(tasks => setTasks(tasks))
-    // }
-
-    // console.log(players)
-    // console.log(board)
-
     useEffect(() => {
         GameService.getTasks()
         .then(tasks => setTasks(tasks))
         }, []
     )
 
-    console.log('tasks:', tasks)
-
     return (
         <>
+            <div><Dice getRoll = {getRoll}/></div>
+
             <div>
                 <GameBoard board={board} />
-                {/* <Players players={players} /> */}
+                <Players players={players} />
             </div>
-            
-            <div className="under-board">
-                <div className="left-box">
-                <Dice/>
-                </div>
 
-                <div className="right-box">
+            <div>
+                <div className="left-box">
                 <PlayerForm addPlayer={addPlayer}/>
                 </div>
             </div>
 
-            <div>
-            <PlayerList players={players}/>
-            </div>
             <div>
                 {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
                 <button onClick={getRandomTask}>Click me</button>
@@ -176,9 +117,3 @@ const Game = () => {
 }
 
 export default Game;
-
-// for (let index = 1; index < 4; index ++){
-//     initPlayers.push({xAxis, yAxis, index})
-//     xAxis = board[roll].xAxis
-//     yAxis = board[roll].yAxis
-// }

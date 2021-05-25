@@ -3,9 +3,10 @@
 }
 
 .canvas {
+  position: absolute;
   position: center;
-  left: 50px;
-  top: 50px;
+  left: 200px;
+  top: 300px;
 }
 
 .under-board {
@@ -14,5 +15,5 @@
   justify-content: space-evenly;
   height: 100px;
   width: 100px;
-  position: center;
+  position: right 200px;
 }
