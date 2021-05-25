@@ -46,6 +46,7 @@ const Game = () => {
     }
 
     const getRoll = (newRoll) => {
+        setLivePlayer(players[playerCounter])
         updatePlayer(newRoll)
     }
 
@@ -66,18 +67,18 @@ const Game = () => {
         tempPlayer.xAxis = board[newPosition].xAxis
         tempPlayer.yAxis = board[newPosition].yAxis
         tempPlayer.currentSquare = newPosition
-        setLivePlayer(tempPlayer)
-        let update = refresh + 1
-        setRefresh(update)
         let counter = playerCounter
         if (counter + 1 === players.length) {
             counter = 0
-            setPlayerCounter(counter)
+            // setPlayerCounter(counter)
         } else {
             counter += 1
-            setPlayerCounter(counter)
+            // setPlayerCounter(counter)
         }
-        setLivePlayer(players[playerCounter])
+        let update = refresh + 1
+        setRefresh(update)
+        setLivePlayer(players[counter])
+        setPlayerCounter(counter)
     }
 
     useEffect(() => {
