@@ -6,6 +6,7 @@ import PlayerForm from '../components/PlayerForm';
 import PlayerList from '../components/PlayerList';
 import GameService from '../services/GameService';
 import Tasks from '../components/Tasks';
+import Actions from '../components/Actions';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
@@ -13,6 +14,8 @@ const Game = () => {
     const [playerCounter, setPlayerCounter] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
     const [randomTask, setRandomTask] = useState(null)
+    const [actions, setActions] = useState([])
+    const [randomAction, setRandomAction] = useState(null)
     const [refresh, setRefresh] = useState(0)
     
     const boardSize = 750;
@@ -59,6 +62,16 @@ const Game = () => {
         }
     }
 
+    const getRandomAction = () => {
+        if (actions.length > 0) {
+            const max = actions.length
+            const randomNumber = Math.floor(Math.random() * max);
+            const action = actions[randomNumber].action
+            setRandomAction(action)
+            return action
+        }
+    }
+
     const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
         console.log(tempPlayer)
@@ -86,6 +99,12 @@ const Game = () => {
         }, []
     )
 
+    useEffect(() => {
+        GameService.getActions()
+        .then(actions => setActions(actions))
+        }, []
+    )
+
     return (
         <>
         <div className="main-wrapper">
@@ -102,14 +121,14 @@ const Game = () => {
 
         <div className="task-button-container">
             {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
-            <button className="task-button" onClick={getRandomTask}>Click me</button>
+            <button className="task-button" onClick={getRandomTask}>Click me: Drink</button>
+            <br />
+            <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
         </div>
 
-        <div className="task-button-container"><Tasks randomTask={randomTask}/></div>
+        <div className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/></div>
 
-        <div>
-            {/* <Actions randomAction={randomAction} /> */}
-        </div>
+        {/* <div className="task-button-container"><Actions randomAction={randomAction}/></div> */}
         </>
     )
 
