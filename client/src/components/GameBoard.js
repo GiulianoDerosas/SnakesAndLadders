@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react"
 import Canvas from "./Canvas"
 
-const GameBoard = ({board}) => {
+const GameBoard = ({ board, ladders }) => {
 
     const drawBoard = ctx => {
 
@@ -12,14 +11,20 @@ const GameBoard = ({board}) => {
             ctx.fill()
             ctx.font = "15px Arial";
             ctx.strokeText(`${tile.index + 1}`, tile.xAxis, tile.yAxis + 75);
-            // if (tile.occupied) 
         })
-    }
+
+        ladders.forEach(ladder => {
+            ctx.beginPath();
+            ctx.moveTo(ladder.startxAxis + 20, ladder.startyAxis- 20)
+            ctx.lineTo(ladder.endxAxis + 20 , ladder.endyAxis - 20)
+            ctx.stroke()
+            ctx.closePath();
+        })
+    }     
 
     let drawItem = drawBoard
 
     return (
-
         <Canvas drawItem={drawItem} />
     )
 }
