@@ -101,10 +101,21 @@ body {
 }
 
 .dice-image {
-  max-width:150px;
-  max-height:auto;
+  max-width:113px;
+  max-height:113px;
   justify-content:center;
-  margin-left: 20px;
+}
+
+.dice {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  text-align: center;
 }
 
 /* Flashes 3 times for the task */

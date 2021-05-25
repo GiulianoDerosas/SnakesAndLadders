@@ -24,7 +24,7 @@ const Dice = ({getRoll}) => {
 return (
         <>
             <div className="dice">
-                <img className="dice-image" alt="" src="https://art.pixilart.com/702705c255873f9.png"/>
+                <img className="dice-image" alt="" src="https://media.istockphoto.com/vectors/drunk-guy-with-two-bottles-of-beerwine-cartoon-pixel-art-character-vector-id1147100739"/>
             </div>
             <div className = "roll-rules">
             <button className="nes-btn is-error" onClick={onClick}>Roll Dice</button>

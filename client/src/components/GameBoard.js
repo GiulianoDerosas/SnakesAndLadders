@@ -15,8 +15,8 @@ const GameBoard = ({ board, ladders }) => {
 
         ladders.forEach(ladder => {
             ctx.beginPath();
-            ctx.moveTo(ladder.startxAxis + 20, ladder.startyAxis- 20)
-            ctx.lineTo(ladder.endxAxis + 20 , ladder.endyAxis - 20)
+            ctx.moveTo(ladder.startxAxis + 32.5, ladder.startyAxis- 35)
+            ctx.lineTo(ladder.endxAxis + 32.5 , ladder.endyAxis - 35)
             ctx.stroke()
             ctx.closePath();
         })

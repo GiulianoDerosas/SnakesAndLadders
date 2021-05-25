@@ -37,17 +37,17 @@ const Game = () => {
     }
 
     const ladders = [
-        {start: 10, startxAxis: board[10].xAxis, startyAxis: board[10].yAxis, end: 31, endxAxis: board[31].xAxis, endyAxis: board[31].yAxis},
-        {start: 36, startxAxis: board[36].xAxis, startyAxis: board[36].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
-        {start: 66, startxAxis: board[66].xAxis, startyAxis: board[66].yAxis, end: 74, endxAxis: board[74].xAxis, endyAxis: board[74].yAxis},
-        {start: 70, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 94, endxAxs: board[94].xAxis,endyAxis: board[94].yAxis}
+        {start: 10, startxAxis: board[9].xAxis, startyAxis: board[9].yAxis, end: 31, endxAxis: board[30].xAxis, endyAxis: board[30].yAxis},
+        {start: 36, startxAxis: board[35].xAxis, startyAxis: board[35].yAxis, end: 62, endxAxis: board[61].xAxis, endyAxis: board[61].yAxis},
+        {start: 66, startxAxis: board[65].xAxis, startyAxis: board[65].yAxis, end: 74, endxAxis: board[73].xAxis, endyAxis: board[73].yAxis},
+        {start: 70, startxAxis: board[69].xAxis, startyAxis: board[69].yAxis, end: 94, endxAxs: board[93].xAxis,endyAxis: board[93].yAxis}
     ]
 
     const snakes = [
-        {start: 23, startxAxis: board[23].xAxis, startyAxis: board[23].yAxis, end: 6, endxAxis: board[6].xAxis, endyAxis: board[6].yAxis},
-        {start: 71, startxAxis: board[71].xAxis, startyAxis: board[71].yAxis, end: 34, endxAxis: board[34].xAxis, endyAxis: board[34].yAxis},
-        {start: 83, startxAxis: board[83].xAxis, startyAxis: board[83].yAxis, end: 59, endxAxis: board[59].xAxis, endyAxis: board[59].yAxis},
-        {start: 99, startxAxis: board[99].xAxis, startyAxis: board[99].yAxis, end: 1, endxAxis: board[1].xAxis, endyAxis: board[1].yAxis}
+        {start: 23, startxAxis: board[22].xAxis, startyAxis: board[22].yAxis, end: 6, endxAxis: board[5].xAxis, endyAxis: board[5].yAxis},
+        {start: 71, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 34, endxAxis: board[33].xAxis, endyAxis: board[33].yAxis},
+        {start: 83, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 59, endxAxis: board[58].xAxis, endyAxis: board[58].yAxis},
+        {start: 99, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 1, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
 
     const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
@@ -130,11 +130,15 @@ const Game = () => {
 
     return (
         <>
+
+        <header className="header">
+        <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/53a912d5d98e3b5.png"/>Snakes & Bladdered
+        <img src="https://thumbs.dreamstime.com/b/pixel-beer-glass-template-vintage-brewery-sign-symbol-set-96054318.jpg"></img></header>
         <div className="main-wrapper">
+        
 
             <div><PlayerForm addPlayer={addPlayer}/></div>
             
-
             <div className="board">
             <GameBoard board={board} ladders={ladders} />
             <Players players={players}/>
