@@ -137,7 +137,6 @@ const Game = () => {
 
         <header className="header">
 
-        {/* <img className="logo-2" src="https://i.ibb.co/Vthqc8f/50-Animals-avatar-12.png" alt="50-Animals-avatar-12" border="0"/> */}
         <img className="logo-2" src="https://i.ibb.co/MDwn8vD/Snake.png" alt="Snake" border="0"/>
         <h1>SNAKES & BLADDERED</h1>
         <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
