@@ -131,6 +131,10 @@ const Game = () => {
         }, []
     )
 
+    const refreshPage = () => {
+        window.location.reload(false);
+    }
+
     return (
         <>
         <div className="main-wrapper">
@@ -146,7 +150,7 @@ const Game = () => {
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
             <button className="nes-btn is-success">Rules</button></div>
-            {/* <button>Refresh</button> */}
+            <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
         </div>
 
         <div className="task-button-container">
