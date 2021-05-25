@@ -3,15 +3,8 @@ import GameBoard from '../components/GameBoard';
 import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
-import PlayerList from '../components/PlayerList';
 import GameService from '../services/GameService';
 import Tasks from '../components/Tasks';
-<<<<<<< HEAD
-import Snakes from '../components/Snakes';
-import Ladders from '../components/Ladders';
-=======
-import Actions from '../components/Actions';
->>>>>>> 28ed0ace40eda2726efe1d1591f90b433e93ff8a
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
@@ -139,7 +132,6 @@ const Game = () => {
             <div className="board">
             <GameBoard board={board} ladders={ladders} />
             <Players players={players}/>
-            {/* <Ladders ladders={ladders} /> */}
             </div>
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
