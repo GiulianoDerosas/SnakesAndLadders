@@ -104,7 +104,7 @@ const Game = () => {
 
             <div>
                 {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
-                <button onClick={getRandomTask}>Click me</button>
+                <button onClick={getRandomTask}>Click me: Drink</button>
                 {/* <p>{randomTask}</p> */}
                 <Tasks randomTask={randomTask} />
             </div>
