@@ -58,7 +58,6 @@ const Game = () => {
             return task
         }
     }
-    // conditional on index position. if even or odd / % 0 or not
 
     const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
@@ -89,28 +88,28 @@ const Game = () => {
 
     return (
         <>
-            <div><Dice getRoll = {getRoll}/></div>
+        <div className="main-wrapper">
 
-            <div>
-                <GameBoard board={board} />
-                <Players players={players} />
-            </div>
+            <div><PlayerForm addPlayer={addPlayer}/></div>
 
-            <div>
-                <div className="left-box">
-                <PlayerForm addPlayer={addPlayer}/>
-                </div>
-            </div>
 
-            <div>
-                {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
-                <button onClick={getRandomTask}>Click me</button>
-                {/* <p>{randomTask}</p> */}
-                <Tasks randomTask={randomTask} />
-            </div>
-            <div>
-                {/* <Actions randomAction={randomAction} /> */}
-            </div>
+            <div className="board"><GameBoard board={board} />
+            <Players players={players}/></div>
+
+            <div className="dice-container"><Dice getRoll = {getRoll}/>
+            <button className="nes-btn is-success">Rules</button></div>
+        </div>
+
+        <div className="task-button-container">
+            {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
+            <button className="task-button" onClick={getRandomTask}>Click me</button>
+        </div>
+
+        <div className="task-button-container"><Tasks randomTask={randomTask}/></div>
+
+        <div>
+            {/* <Actions randomAction={randomAction} /> */}
+        </div>
         </>
     )
 
