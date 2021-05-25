@@ -33,67 +33,85 @@ const Game = () => {
         }
     }
 
-    // const startGame = () => {
+    useEffect(() => {
 
-    //     const initPlayers = []
+    }, [])
 
-    //     let player_1 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 1 
-    //     }
-    //     initPlayers.push(player_1)
+    const addPlayer = newPlayer => {
 
-    //     let player_2 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 2
-    //     }
-    //     initPlayers.push(player_2)
+        let tempArray = players
+        players.push(newPlayer)
+        setPlayers(tempArray)
+        console.log(players)
+        setLivePlayer(players[0])
 
-    //     let player_3 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 3
-    //     }
-    //     initPlayers.push(player_3)
+        // const initPlayers = []
 
-    //     let player_4 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 4
-    //     }
-    //     initPlayers.push(player_4)
-    //     setPlayers(initPlayers)
-    // }
+        // let player_1 = {
+        //     xAxis: board[roll].xAxis,
+        //     yAxis: board[roll].yAxis,
+        //     currentSquare: 0,
+        //     id: 1 
+        // }
+        // initPlayers.push(player_1)
+
+        // let player_2 = {
+        //     xAxis: board[roll].xAxis,
+        //     yAxis: board[roll].yAxis,
+        //     currentSquare: 0,
+        //     id: 2
+        // }
+        // initPlayers.push(player_2)
+
+        // let player_3 = {
+        //     xAxis: board[roll].xAxis,
+        //     yAxis: board[roll].yAxis,
+        //     currentSquare: 0,
+        //     id: 3
+        // }
+        // initPlayers.push(player_3)
+
+        // let player_4 = {
+        //     xAxis: board[roll].xAxis,
+        //     yAxis: board[roll].yAxis,
+        //     currentSquare: 0,
+        //     id: 4
+        // }
+        // initPlayers.push(player_4)
+        // 
+
+        // console.log(player_1.xAxis)
+        // console.log (player_1.yAxis)
+    }
 
 
 
     const rollDice = () => {
-        setLivePlayer(players[playerCounter])
+        // 
         const max = 6
-        let updateRoll = roll
         let newroll = Math.ceil(Math.random() * max);
 
         // add if statement to stop player going past square 100
 
-        updateRoll += newroll
-        setRoll(updateRoll)
+        setRoll(newroll)
         updatePlayer()
         changePlayer()
     }
 
     const updatePlayer = () => {
-        console.log(livePlayer.xAxis)
         let tempPlayer = livePlayer
-        tempPlayer.xAxis = board[roll].xAxis
-        tempPlayer.yAxis = board[roll].yAxis
+        console.log(tempPlayer)
+        let newPosition = tempPlayer.currentSquare + roll
+        tempPlayer.xAxis = board[newPosition].xAxis
+        tempPlayer.yAxis = board[newPosition].yAxis
+        tempPlayer.currentSquare = newPosition
         setLivePlayer(tempPlayer)
     }
 
     const changePlayer = () => {
+        console.log(players)
         let counter = playerCounter
-        if (counter === 3) {
+        if (counter + 1 === players.length) {
             counter = 0
             setPlayerCounter(counter)
         } else {
@@ -103,13 +121,7 @@ const Game = () => {
         setLivePlayer(players[playerCounter])
     }
 
-    const addPlayer = (newPlayer) =>{
-        const temp = players.map(player => player);
-        temp.push(newPlayer);
-        setPlayers(temp);
-        console.log(players);
-      }
-
+    
     //   const getTasks = () => {
     //     fetch('http://localhost:5000/tasks')
     //         .then(res => res.json())
@@ -122,8 +134,11 @@ const Game = () => {
     return (
         <>
             <div>
+                <button onClick={rollDice}>Roll Dice</button>
+            </div>
+            <div>
                 <GameBoard board={board} />
-                {/* <Players players={players} /> */}
+                <Players players={players} />
             </div>
             
             <div className="under-board">
