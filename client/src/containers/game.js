@@ -59,6 +59,7 @@ const Game = () => {
             const randomNumber = Math.floor(Math.random() * max);
             const task = tasks[randomNumber].task
             setRandomTask(task)
+            setRandomAction("")
             return task
         }
     }
@@ -69,6 +70,7 @@ const Game = () => {
             const randomNumber = Math.floor(Math.random() * max);
             const action = actions[randomNumber].action
             setRandomAction(action)
+            setRandomTask("")
             return action
         }
     }
