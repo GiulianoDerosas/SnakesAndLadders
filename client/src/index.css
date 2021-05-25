@@ -38,12 +38,12 @@ body {
 .nes-btn.is-success {
   width: 200px;
   align-self: center;
+  margin-bottom: 10px;
 }
 
 .nes-btn.is-error {
   width: 200px;
-  align-self: center;
-  margin-bottom: 20px;
+  justify-content: center;
 }
 
 .title {
@@ -92,12 +92,15 @@ body {
 .row-rules {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .dice-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  width: 240px;
 }
 
 .dice-image {
@@ -114,9 +117,30 @@ body {
 .header {
   display: flex;
   justify-content: center;
-  height: 100px;
+  height: 70px;
+  text-align: center;
+  background-color: #eb5e0b;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  display: flex;
+  height: 60px;
+}
+
+.logo-2 {
+  display: flex;
+  height: 60px;
+  margin-right: 4px;
+}
+
+
+
+.livePlayer {
   text-align: center;
 }
+
 
 /* Flashes 3 times for the task */
 .flashing-tasks {

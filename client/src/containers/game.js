@@ -37,10 +37,10 @@ const Game = () => {
     }
 
     const ladders = [
-        {start: 10, startxAxis: board[9].xAxis, startyAxis: board[9].yAxis, end: 31, endxAxis: board[30].xAxis, endyAxis: board[30].yAxis},
-        {start: 36, startxAxis: board[35].xAxis, startyAxis: board[35].yAxis, end: 62, endxAxis: board[61].xAxis, endyAxis: board[61].yAxis},
-        {start: 66, startxAxis: board[65].xAxis, startyAxis: board[65].yAxis, end: 74, endxAxis: board[73].xAxis, endyAxis: board[73].yAxis},
-        {start: 70, startxAxis: board[69].xAxis, startyAxis: board[69].yAxis, end: 94, endxAxs: board[93].xAxis,endyAxis: board[93].yAxis}
+        {start: 10, startxAxis: 710, startyAxis: 710, end: 31, endxAxis: 710, endyAxis: 485},
+        {start: 36, startxAxis: 335, startyAxis: 485, end: 62, endxAxis: 110, endyAxis: 260},
+        {start: 66, startxAxis: 410, startyAxis: 260, end: 74, endxAxis: 485, endyAxis: 185},
+        {start: 70, startxAxis: 710, startyAxis: 260, end: 94, endxAxs: 485, endyAxis: 35}
     ]
 
     const snakes = [
@@ -53,6 +53,8 @@ const Game = () => {
     const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
 
     const punishments = [2, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
+
+    console.log(board)
 
     const addPlayer = newPlayer => {
 
@@ -128,24 +130,36 @@ const Game = () => {
         }, []
     )
 
+    console.log(players);
+
     return (
         <>
 
         <header className="header">
-        <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/53a912d5d98e3b5.png"/>Snakes & Bladdered
-        <img src="https://thumbs.dreamstime.com/b/pixel-beer-glass-template-vintage-brewery-sign-symbol-set-96054318.jpg"></img></header>
+
+        {/* <img className="logo-2" src="https://i.ibb.co/Vthqc8f/50-Animals-avatar-12.png" alt="50-Animals-avatar-12" border="0"/> */}
+        <img className="logo-2" src="https://i.ibb.co/MDwn8vD/Snake.png" alt="Snake" border="0"/>
+        <h1>SNAKES & BLADDERED</h1>
+        <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
+        </header>
         <div className="main-wrapper">
         
 
-            <div><PlayerForm addPlayer={addPlayer}/></div>
+            <div className="dice-container">
+                <PlayerForm addPlayer={addPlayer}/><br></br>
+                {players.name}
+            </div>
             
             <div className="board">
-            <GameBoard board={board} ladders={ladders} />
+            <GameBoard board={board} ladders={ladders} snakes={snakes} />
             <Players players={players}/>
             </div>
 
-            <div className="dice-container"><Dice getRoll = {getRoll}/>
-            <button className="nes-btn is-success">Rules</button></div>
+            <div className="dice-container">
+                <Dice livePlayer={livePlayer} getRoll = {getRoll}/>
+                
+                <div className="livePlayer">{livePlayer.name}'s Roll</div>
+            </div>
             {/* <button>Refresh</button> */}
         </div>
 

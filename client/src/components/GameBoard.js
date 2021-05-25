@@ -1,6 +1,6 @@
 import Canvas from "./Canvas"
 
-const GameBoard = ({ board, ladders }) => {
+const GameBoard = ({ board, ladders, snakes }) => {
 
     const drawBoard = ctx => {
 
@@ -15,8 +15,16 @@ const GameBoard = ({ board, ladders }) => {
 
         ladders.forEach(ladder => {
             ctx.beginPath();
-            ctx.moveTo(ladder.startxAxis + 32.5, ladder.startyAxis- 35)
-            ctx.lineTo(ladder.endxAxis + 32.5 , ladder.endyAxis - 35)
+            ctx.moveTo(ladder.startxAxis, ladder.startyAxis)
+            ctx.lineTo(ladder.endxAxis, ladder.endyAxis)
+            ctx.stroke()
+            ctx.closePath();
+        })
+
+        snakes.forEach(snake => {
+            ctx.beginPath();
+            ctx.moveTo(snake.startxAxis + 35, snake.startyAxis + 35)
+            ctx.lineTo(snake.endxAxis + 35, snake.endyAxis + 35)
             ctx.stroke()
             ctx.closePath();
         })
