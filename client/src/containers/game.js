@@ -14,7 +14,8 @@ const Game = () => {
     const [roll, setRoll] = useState(0)
     const [playerCounter, setPlayerCounter] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
-
+    const [randomTask, setRandomTask] = useState(null)
+    
     const boardSize = 750;
     const tiles = 10;
     const tileSize = 75;
@@ -85,6 +86,18 @@ const Game = () => {
         changePlayer()
     }
 
+    const getRandomTask = () => {
+        if (tasks.length > 0) {
+            const max = tasks.length
+            const randomNumber = Math.floor(Math.random() * max);
+            console.log(tasks[randomNumber].task)
+            const task = tasks[randomNumber].task
+            setRandomTask(task)
+            return task
+        }
+    }
+    // conditional on index position. if even or odd / % 0 or not
+
     const updatePlayer = () => {
         console.log(livePlayer.xAxis)
         let tempPlayer = livePlayer
@@ -109,7 +122,7 @@ const Game = () => {
         const temp = players.map(player => player);
         temp.push(newPlayer);
         setPlayers(temp);
-        console.log(players);
+        // console.log(players);
       }
 
     //   const getTasks = () => {
@@ -118,8 +131,8 @@ const Game = () => {
     //         .then(tasks => setTasks(tasks))
     // }
 
-    console.log(players)
-    console.log(board)
+    // console.log(players)
+    // console.log(board)
 
     useEffect(() => {
         GameService.getTasks()
@@ -127,7 +140,7 @@ const Game = () => {
         }, []
     )
 
-    console.log('tasks', tasks)
+    console.log('tasks:', tasks)
 
     return (
         <>
@@ -150,9 +163,10 @@ const Game = () => {
             <PlayerList players={players}/>
             </div>
             <div>
-               <p>{tasks[0].task}</p> 
-                <Tasks tasks={tasks}/>
-                <button onClick={getTask}>Get Task</button>
+                {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
+                <button onClick={getRandomTask}>Click me</button>
+                {/* <p>{randomTask}</p> */}
+                <Tasks randomTask={randomTask} />
             </div>
         </>
     )
