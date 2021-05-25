@@ -14,4 +14,3 @@ const Canvas = ({drawItem}) => {
 }
 
 export default Canvas
-// width="750" height="750" 
