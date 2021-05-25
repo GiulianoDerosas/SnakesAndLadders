@@ -15,9 +15,6 @@ MongoClient.connect('mongodb://localhost:27017')
     const taskCollection = db.collection('tasks');
     const taskRouter = createRouter(taskCollection);
     app.use(('/api/tasks'), taskRouter);
-    // const playerCollection = db.collection('players');
-    // const playerRouter = createRouter(playerCollection);
-    // app.use(('/players'), playerRouter);
 });
 
 app.listen(5000, function() {
