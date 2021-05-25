@@ -4,15 +4,25 @@ import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
 import PlayerList from '../components/PlayerList';
+import GameService from '../services/GameService';
+import Tasks from '../components/Tasks';
+<<<<<<< HEAD
+import Snakes from '../components/Snakes';
+import Ladders from '../components/Ladders';
+=======
+import Actions from '../components/Actions';
+>>>>>>> 28ed0ace40eda2726efe1d1591f90b433e93ff8a
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
-    const [users, setUsers] = useState([])
     const [players, setPlayers] = useState([])
-    const [roll, setRoll] = useState(0)
     const [playerCounter, setPlayerCounter] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
-
+    const [randomTask, setRandomTask] = useState(null)
+    const [actions, setActions] = useState([])
+    const [randomAction, setRandomAction] = useState(null)
+    const [refresh, setRefresh] = useState(0)
+    
     const boardSize = 750;
     const tiles = 10;
     const tileSize = 75;
@@ -33,121 +43,122 @@ const Game = () => {
         }
     }
 
-    // const startGame = () => {
+    const ladders = [
+        {start: 10, startxAxis: board[10].xAxis, startyAxis: board[10].yAxis, end: 31, endxAxis: board[31].xAxis, endyAxis: board[31].yAxis},
+        {start: 36, startxAxis: board[36].xAxis, startyAxis: board[36].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
+        {start: 66, startxAxis: board[66].xAxis, startyAxis: board[66].yAxis, end: 74, endxAxis: board[74].xAxis, endyAxis: board[74].yAxis},
+        {start: 70, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 94, endxAxs: board[94].xAxis,endyAxis: board[94].yAxis}
+    ]
 
-    //     const initPlayers = []
+    const snakes = [
+        {start: 23, startxAxis: board[23].xAxis, startyAxis: board[23].yAxis, end: 6, endxAxis: board[6].xAxis, endyAxis: board[6].yAxis},
+        {start: 71, startxAxis: board[71].xAxis, startyAxis: board[71].yAxis, end: 34, endxAxis: board[34].xAxis, endyAxis: board[34].yAxis},
+        {start: 83, startxAxis: board[83].xAxis, startyAxis: board[83].yAxis, end: 59, endxAxis: board[59].xAxis, endyAxis: board[59].yAxis},
+        {start: 99, startxAxis: board[99].xAxis, startyAxis: board[99].yAxis, end: 1, endxAxis: board[1].xAxis, endyAxis: board[1].yAxis}
+    ]
 
-    //     let player_1 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 1 
-    //     }
-    //     initPlayers.push(player_1)
+    const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
 
-    //     let player_2 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 2
-    //     }
-    //     initPlayers.push(player_2)
+    const punishments = [2, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
 
-    //     let player_3 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 3
-    //     }
-    //     initPlayers.push(player_3)
+    const addPlayer = newPlayer => {
 
-    //     let player_4 = {
-    //         xAxis: board[roll].xAxis,
-    //         yAxis: board[roll].yAxis,
-    //         index: 4
-    //     }
-    //     initPlayers.push(player_4)
-    //     setPlayers(initPlayers)
-    // }
+        let tempArray = players
+        players.push(newPlayer)
+        setPlayers(tempArray)
+        setLivePlayer(players[0])
+        let update = refresh + 1
+        setRefresh(update)
+    }
 
-
-
-    const rollDice = () => {
+    const getRoll = (newRoll) => {
         setLivePlayer(players[playerCounter])
-        const max = 6
-        let updateRoll = roll
-        let newroll = Math.ceil(Math.random() * max);
-
-        // add if statement to stop player going past square 100
-
-        updateRoll += newroll
-        setRoll(updateRoll)
-        updatePlayer()
-        changePlayer()
+        updatePlayer(newRoll)
     }
 
-    const updatePlayer = () => {
-        console.log(livePlayer.xAxis)
+    const getRandomTask = () => {
+        if (tasks.length > 0) {
+            const max = tasks.length
+            const randomNumber = Math.floor(Math.random() * max);
+            const task = tasks[randomNumber].task
+            setRandomTask(task)
+            setRandomAction("")
+            return task
+        }
+    }
+
+    const getRandomAction = () => {
+        if (actions.length > 0) {
+            const max = actions.length
+            const randomNumber = Math.floor(Math.random() * max);
+            const action = actions[randomNumber].action
+            setRandomAction(action)
+            setRandomTask("")
+            return action
+        }
+    }
+
+    const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
-        tempPlayer.xAxis = board[roll].xAxis
-        tempPlayer.yAxis = board[roll].yAxis
-        setLivePlayer(tempPlayer)
-    }
-
-    const changePlayer = () => {
+        console.log(tempPlayer)
+        let newPosition = tempPlayer.currentSquare + newRoll
+        tempPlayer.xAxis = board[newPosition].xAxis
+        tempPlayer.yAxis = board[newPosition].yAxis
+        tempPlayer.currentSquare = newPosition
         let counter = playerCounter
-        if (counter === 3) {
+        if (counter + 1 === players.length) {
             counter = 0
-            setPlayerCounter(counter)
         } else {
             counter += 1
-            setPlayerCounter(counter)
         }
-        setLivePlayer(players[playerCounter])
+        let update = refresh + 1
+        setRefresh(update)
+        setLivePlayer(players[counter])
+        setPlayerCounter(counter)
     }
 
-    const addPlayer = (newPlayer) =>{
-        const temp = players.map(player => player);
-        temp.push(newPlayer);
-        setPlayers(temp);
-        console.log(players);
-      }
+    useEffect(() => {
+        GameService.getTasks()
+        .then(tasks => setTasks(tasks))
+        }, []
+    )
 
-    //   const getTasks = () => {
-    //     fetch('http://localhost:5000/tasks')
-    //         .then(res => res.json())
-    //         .then(tasks => setTasks(tasks))
-    // }
-
-    console.log(players)
-    console.log(board)
+    useEffect(() => {
+        GameService.getActions()
+        .then(actions => setActions(actions))
+        }, []
+    )
 
     return (
         <>
-            <div>
-                <GameBoard board={board} />
-                {/* <Players players={players} /> */}
-            </div>
+        <div className="main-wrapper">
+
+            <div><PlayerForm addPlayer={addPlayer}/></div>
             
-            <div className="under-board">
-                <div className="left-box">
-                <Dice/>
-                </div>
 
-                <div className="right-box">
-                <PlayerForm addPlayer={addPlayer}/>
-                </div>
+            <div className="board">
+            <GameBoard board={board} ladders={ladders} />
+            <Players players={players}/>
+            {/* <Ladders ladders={ladders} /> */}
             </div>
 
-            <div>
-            <PlayerList players={players}/>
-            </div>
+            <div className="dice-container"><Dice getRoll = {getRoll}/>
+            <button className="nes-btn is-success">Rules</button></div>
+        </div>
+
+        <div className="task-button-container">
+            {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
+            <button className="task-button" onClick={getRandomTask}>Click me: Drink</button>
+            <br />
+            <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
+        </div>
+
+        <div className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/></div>
+
+        {/* <div className="task-button-container"><Actions randomAction={randomAction}/></div> */}
         </>
     )
 
 }
 
 export default Game;
-
-// for (let index = 1; index < 4; index ++){
-//     initPlayers.push({xAxis, yAxis, index})
-//     xAxis = board[roll].xAxis
-//     yAxis = board[roll].yAxis
-// }

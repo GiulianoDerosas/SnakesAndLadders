@@ -1,18 +1,16 @@
-const baseURL = 'http://localhost:5000/api/players'
+const baseURL = 'http://localhost:5000/api/tasks'
+const baseURL2 = 'http://localhost:5000/api/actions'
 
-// const baseURL = 'http://localhost:5000/api/sightings/'
+const GameService = {
 
-export const getPlayers = () => {
-    return fetch(baseURL)
-        .then(res => res.json())
+    getTasks() {
+        return fetch(baseURL)
+            .then(res => res.json())
+    },
+
+    getActions() {
+        return fetch(baseURL2)
+            .then(res => res.json())
+    }
 }
-
-export const postPlayers = (payload) => {
-    return fetch(baseURL, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(res => res.json())
-}
-
+export default GameService

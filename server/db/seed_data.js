@@ -1,37 +1,51 @@
 use snakes_and_ladders;
+
 db.dropDatabase();
 
 db.tasks.insertMany([
     {
-        "task": "Take off your socks!"
+        "task": "Take a drink"
     },
     {
-        "task": "Take your bra off!"
-    },
+        "task": "Take two drinks"
+    }, 
     {
-        "task": "Can't use your hands to drink for a round"
-    }
+        "task": "Take three drinks"
+    },
 ])
 
-db.players.insertMany([
+db.actions.insertMany([
     {
-        "player": "1",
-        "name": "",
-        "counter": ""
+        "action": "Nominate another player to finish their vessel"
     },
     {
-        "player": "2",
-        "name": "",
-        "counter": ""
+        "action": "Shotgun, last person takes a drink"
     },
     {
-        "player": "3",
-        "name": "",
-        "counter": ""
+        "action": "Nominate another player to drink"
     },
     {
-        "player": "4",
-        "name": "",
-        "counter": ""
+        "action": "Finish your vessel"
+    },
+    {
+        "action": "Stand until your next turn is over"
+    },
+    {
+        "action": "Can't use your hands to drink for a round"
+    },
+    {
+        "action": "Take a shot"
+    },
+])
+
+db.drinks.insertMany([
+    {
+        "drink": "Take 1 Gulp!"
+    },
+    {
+        "drink": "Take 2 Gulp!"
+    },
+    {
+        "drink": "Take 3 Gulp!"
     }
 ])
