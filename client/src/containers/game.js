@@ -96,6 +96,13 @@ const Game = () => {
         }
     }
 
+    const checkForEnd = (array) => {
+        if (array.length > 0) {
+            window.alert(`The winner is ${array[0].name}! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            refreshPage()
+        } 
+    }
+
     const getNoTask = () => {
         setRandomTask("")
         setRandomAction("")
@@ -132,7 +139,8 @@ const Game = () => {
          
         } else if (newPosition === 99) {
             console.log("removing player for win condition")
-            tempPlayers.splice(currentPlayerIndex, 1)
+            let winner = tempPlayers.splice(currentPlayerIndex, 1)
+            checkForEnd(winner)
         }
         triggerSquare()
         let nextPlayerIndex = currentPlayerIndex
