@@ -98,7 +98,7 @@ const Game = () => {
 
     const checkForEnd = (array) => {
         if (array.length > 0) {
-            window.alert(`The winner is ${array[0].name}! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            window.alert(`${array[0].name} Won! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
             refreshPage()
         } 
     }
