@@ -13,7 +13,7 @@ const RuleDisplay = () => {
     }
     return (
         <div className="rulesbutton">
-            <button className="nes-btn is-success" type="submit" value="Rules" onClick={onClick}>Rules</button>
+            <button className="nes-btn is-warning" type="submit" value="Rules" onClick={onClick}>Rules</button>
             {showDisplay ? <Rules /> : null}
         </div>
     )

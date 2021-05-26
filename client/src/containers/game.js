@@ -12,6 +12,7 @@ const Game = () => {
     const [players, setPlayers] = useState([])
     const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
+    const [previousPlayer, setPreviousPlayer] = useState({})
     const [randomTask, setRandomTask] = useState([])
     const [actions, setActions] = useState([])
     const [randomAction, setRandomAction] = useState(null)
@@ -131,9 +132,9 @@ const Game = () => {
     }
 
     const getNoTask = () => {
-        setRandomTask("")
+        setRandomTask(" got away with it this time!")
         setRandomAction("")
-        return ("")
+        // return ("")
     }
 
 
@@ -172,16 +173,18 @@ const Game = () => {
         checkSnakes(tempPlayer)
         triggerSquare()
         let nextPlayerIndex = currentPlayerIndex
+        let previousPlayerIndex = currentPlayerIndex - 1
         if (nextPlayerIndex + 1 === players.length) {
             nextPlayerIndex = 0
-            // setCurrentPlayerIndex(nextPlayerIndex)
+            previousPlayerIndex = players.length - 1
         } else {
             nextPlayerIndex += 1
-            // setCurrentPlayerIndex(nextPlayerIndex)
+            previousPlayerIndex = nextPlayerIndex - 1
         }
         let update = refresh + 1
         setRefresh(update)
         setLivePlayer(players[nextPlayerIndex])
+        setPreviousPlayer(players[previousPlayerIndex])
         setCurrentPlayerIndex(nextPlayerIndex)
     }
 
@@ -218,7 +221,6 @@ const Game = () => {
         
             <div className="dice-container">
                 <PlayerForm addPlayer={addPlayer}/><br></br>
-                {players.name}
             </div>
             
             <div className="board">
@@ -229,14 +231,14 @@ const Game = () => {
             <div className="dice-container">
                 <Dice getRoll = {getRoll}/>
                 <br />
-                <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
+                <button className="nes-btn is-success" onClick={refreshPage}>New Game</button>
                 <br />
                 <RuleDisplay />
             </div>
         </div>
         <br />
         <div 
-        className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
+        className="task-button-container"><Tasks livePlayer={livePlayer} previousPlayer={previousPlayer} randomTask={randomTask} randomAction={randomAction}/>
         </div>
         </React.Fragment>
     )
