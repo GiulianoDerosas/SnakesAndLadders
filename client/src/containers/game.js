@@ -228,8 +228,11 @@ const Game = () => {
 
         <div className="main-wrapper">
         
-            <div className="dice-container">
-                <PlayerForm addPlayer={addPlayer}/><br></br>
+            <div className="form-container">
+                <PlayerForm addPlayer={addPlayer}/><br></br><br />
+                <div className="task-screen" 
+                    className="task-button-container"><Tasks livePlayer={livePlayer} previousPlayer={previousPlayer} randomTask={randomTask} randomAction={randomAction}/>
+                </div>
             </div>
             
             <div className="board">
@@ -246,9 +249,9 @@ const Game = () => {
             </div>
         </div>
         <br />
-        <div 
+        {/* <div 
         className="task-button-container"><Tasks livePlayer={livePlayer} previousPlayer={previousPlayer} randomTask={randomTask} randomAction={randomAction}/>
-        </div>
+        </div> */}
         </React.Fragment>
     )
 

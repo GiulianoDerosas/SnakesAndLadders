@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
+
   margin: 0;
   font-family: 'Press Start 2P', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+}
+
+.App {
+  background-image: url('https://i.imgur.com/8XIBypg.png');
+  background-repeat: no-repeat scroll;
 }
 
 h1 {
@@ -85,11 +91,12 @@ button.nes-btn.is-success::after {
 }
 
 .nes-container.with-title.is-centered {
-  width: 800px;
-  height: 200px;
+  width: 500px;
+  height: 250px;
 }
 
 .task-container {
+  background-color: white;
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -137,6 +144,19 @@ button.nes-btn.is-success::after {
   width: 240px;
 }
 
+.task-screen {
+  padding-left: 20px;
+  padding-right: 100px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  width: 240px;
+}
+
 .dice-image {
   max-width:113px;
   max-height:113px;
@@ -150,20 +170,25 @@ button.nes-btn.is-success::after {
 
 .header {
   display: flex;
+  color: white;
   justify-content: center;
   height: 70px;
   text-align: center;
-  background-color: #eb5e0b;
+  background-color: #d96b32;
   align-items: center;
   margin-bottom: 10px;
 }
 
 .logo {
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
   height: 60px;
 }
 
 .logo-2 {
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
   height: 60px;
   margin-right: 4px;

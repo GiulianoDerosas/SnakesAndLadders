@@ -14,7 +14,7 @@ const Tasks = ({randomTask, randomAction, noTask, previousPlayer, livePlayer}) =
         {/* <p>"Brace yourselves..."</p> */}
         
         <br></br>
-        <p className="flashing-tasks">{previousPlayer.name}{randomTask}{randomAction}{noTask}</p>
+        <p className="flashing-tasks">{previousPlayer.name} {randomTask}{randomAction}{noTask}</p>
       </div>
     </div>
     )
