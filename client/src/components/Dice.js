@@ -15,7 +15,6 @@ const Dice = ({getRoll}) => {
         } else {
         document.querySelector(".dice-image").setAttribute("src",
         "https://media.geeksforgeeks.org/wp-content/uploads/2020050814100"+newRoll+"/dice" + newRoll +".png")}
-        console.log(newRoll);
         getRoll(newRoll)
     }
 

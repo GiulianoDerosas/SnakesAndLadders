@@ -11,7 +11,7 @@ const PlayerForm = ({addPlayer}) => {
   const handleColorChange = (ev) => setColor(ev.target.value);
 
   const handleSubmit = ev => {
-
+    console.log("hello, deirdre",ID)
     ev.preventDefault();
     if (ID < 5) {
       addPlayer({
@@ -20,7 +20,7 @@ const PlayerForm = ({addPlayer}) => {
         color: color,
         xAxis: xAxis,
         yAxis: yAxis,
-        currentSquare: currentSquare
+        currentSquare: currentSquare 
       });
       let newID = ID + 1
       setID(newID)

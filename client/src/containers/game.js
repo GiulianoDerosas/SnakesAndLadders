@@ -11,7 +11,7 @@ import Tasks from '../components/Tasks';
 const Game = () => {
     const [tasks, setTasks] = useState([])
     const [players, setPlayers] = useState([])
-    const [playerCounter, setPlayerCounter] = useState(0)
+    const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
     const [randomTask, setRandomTask] = useState(null)
     const [refresh, setRefresh] = useState(0)
@@ -47,8 +47,10 @@ const Game = () => {
     }
 
     const getRoll = (newRoll) => {
-        setLivePlayer(players[playerCounter])
-        updatePlayer(newRoll)
+        if(players.length){
+            setLivePlayer(players[currentPlayerIndex])
+            updatePlayer(newRoll)
+        }
     }
 
     const getRandomTask = () => {
@@ -63,23 +65,36 @@ const Game = () => {
 
     const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
-        console.log(tempPlayer)
+        let tempPlayers = players
+        
         let newPosition = tempPlayer.currentSquare + newRoll
-        tempPlayer.xAxis = board[newPosition].xAxis
-        tempPlayer.yAxis = board[newPosition].yAxis
-        tempPlayer.currentSquare = newPosition
-        let counter = playerCounter
-        if (counter + 1 === players.length) {
-            counter = 0
-            // setPlayerCounter(counter)
+        if (newPosition < 99 ) {
+            tempPlayer.xAxis = board[newPosition].xAxis
+            tempPlayer.yAxis = board[newPosition].yAxis
+            tempPlayer.currentSquare = newPosition
+        } else if (newPosition > 99) {
+            let remainder = newPosition - 99
+            tempPlayer.xAxis = board[99 - remainder].xAxis
+            tempPlayer.yAxis = board[99 - remainder].yAxis 
+            tempPlayer.currentSquare = 99 - remainder
+         
+        } else if (newPosition === 99) {
+            console.log("removing player for win condition")
+            tempPlayers.splice(currentPlayerIndex, 1)
+        }
+        
+        let nextPlayerIndex = currentPlayerIndex
+        if (nextPlayerIndex + 1 === players.length) {
+            nextPlayerIndex = 0
+            // setCurrentPlayerIndex(nextPlayerIndex)
         } else {
-            counter += 1
-            // setPlayerCounter(counter)
+            nextPlayerIndex += 1
+            // setCurrentPlayerIndex(nextPlayerIndex)
         }
         let update = refresh + 1
         setRefresh(update)
-        setLivePlayer(players[counter])
-        setPlayerCounter(counter)
+        setLivePlayer(players[nextPlayerIndex])
+        setCurrentPlayerIndex(nextPlayerIndex)
     }
 
     useEffect(() => {
@@ -87,7 +102,7 @@ const Game = () => {
         .then(tasks => setTasks(tasks))
         }, []
     )
-
+        console.log(players)
     return (
         <React.Fragment>
         <div className="main-wrapper">
