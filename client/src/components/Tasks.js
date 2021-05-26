@@ -1,19 +1,10 @@
 import React from 'react';
 
-const Tasks = ({tasks, task, randomTask, randomAction, noTask, getRandomTask}) => {
+const Tasks = ({randomTask, randomAction, noTask}) => {
 
-    // const randomTask = getRandomTask()
-
-    // const displayTask = 
 
     return (
-        // <div>
-        // {/* {randomTask} */}
-        // {/* {task} */}
-        // {/* <button onClick={getRandomTask}>Get Task</button> */}
-        // {randomTask}
-        // </div>
-
+ 
     <div className="task-container">
       <div className="nes-container with-title is-centered">
         <h2 className="title">Tasks!</h2>

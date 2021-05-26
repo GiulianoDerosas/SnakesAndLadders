@@ -75,13 +75,12 @@ const Game = () => {
             const max = tasks.length
             const randomNumber = Math.floor(Math.random() * max);
             const task = tasks[randomNumber].task
-            setRandomTask(task)
+            setRandomTask(tasks[randomNumber].task)
+            setRandomAction("")
             return task
         }
     }
 
-<<<<<<< HEAD
-=======
     const getRandomAction = () => {
         if (actions.length > 0) {
             const max = actions.length
@@ -99,7 +98,6 @@ const Game = () => {
         return ("")
     }
 
->>>>>>> 25c7d1cd262683d4d79f95065c3851bf93e08290
     const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
         console.log(tempPlayer)
@@ -125,6 +123,16 @@ const Game = () => {
         }, []
     )
 
+    useEffect(() => {
+        GameService.getActions()
+        .then(actions => setActions(actions))
+        }, []
+    )
+
+    const refreshPage = () => {
+        window.location.reload(false);
+    }
+
     return (
         <>
         <div className="main-wrapper">
@@ -138,21 +146,13 @@ const Game = () => {
             </div>
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
+            <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
             <button className="nes-btn is-success">Rules</button></div>
-            {/* <button>Refresh</button> */}
         </div>
 
         <div className="task-button-container">
+
             {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
-<<<<<<< HEAD
-            <button className="task-button" onClick={getRandomTask}>Click me</button>
-        </div>
-
-        <div className="task-button-container"><Tasks randomTask={randomTask}/></div>
-
-        <div>
-            {/* <Actions randomAction={randomAction} /> */}
-=======
             <button className="task-button" onClick={getRandomTask}>Click me: Task</button>
             <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
             <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
@@ -160,7 +160,6 @@ const Game = () => {
 
         <div 
         className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
->>>>>>> 25c7d1cd262683d4d79f95065c3851bf93e08290
         </div>
         </>
     )
