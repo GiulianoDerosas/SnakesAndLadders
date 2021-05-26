@@ -62,7 +62,7 @@ const PlayerForm = ({addPlayer}) => {
               <option value="null">Select</option>
               <option value="#3877ff">Blue</option>
               <option value="#ff3838">Red</option>
-              <option value="#39f500">Green</option>
+              <option value="#0ddbca">Green</option>
               <option value="#ff38f5">Pink</option>
             </select>
           </div>
