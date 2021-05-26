@@ -60,10 +60,10 @@ const PlayerForm = ({addPlayer}) => {
               onChange={handleColorChange}
             >
               <option value="null">Select</option>
-              <option value="#0099ff">Blue</option>
-              <option value="#ffcc00">Yellow</option>
-              <option value="#00cc00">Green</option>
-              <option value="#cc00ff">Pink</option>
+              <option value="#3877ff">Blue</option>
+              <option value="#ff3838">Red</option>
+              <option value="#39f500">Green</option>
+              <option value="#ff38f5">Pink</option>
             </select>
           </div>
 
