@@ -28,7 +28,7 @@ db.actions.insertMany([
         "action": " finish your vessel"
     },
     {
-        "action": " atand until your next turn is over"
+        "action": " stand until your next turn is over"
     },
     {
         "action": " can't use your hands to drink for a round"
