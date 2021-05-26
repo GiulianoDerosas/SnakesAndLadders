@@ -51,7 +51,7 @@ const Game = () => {
         {start: 99, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 1, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
 
-    const drinks = [4, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
+    const drinks = [4, 8, 12, 16, 19, 22, 26, 28, 33, 37, 42, 45, 46, 47, 52, 55, 58, 63, 68, 75, 76, 81, 85, 89, 93, 97]
 
     const punishments = [3, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
 
