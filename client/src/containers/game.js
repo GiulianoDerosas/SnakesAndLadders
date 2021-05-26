@@ -12,7 +12,7 @@ const Game = () => {
     const [players, setPlayers] = useState([])
     const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
-    const [randomTask, setRandomTask] = useState(null)
+    const [randomTask, setRandomTask] = useState([])
     const [actions, setActions] = useState([])
     const [randomAction, setRandomAction] = useState(null)
     const [refresh, setRefresh] = useState(0)
@@ -51,9 +51,9 @@ const Game = () => {
         {start: 99, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 1, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
 
-    const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
+    const drinks = [4, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
 
-    const punishments = [2, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
+    const punishments = [3, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
 
     console.log(board)
 
@@ -71,7 +71,6 @@ const Game = () => {
         if(players.length){
             setLivePlayer(players[currentPlayerIndex])
             updatePlayer(newRoll)
-            triggerSquare()
         }
     }
 
@@ -103,13 +102,16 @@ const Game = () => {
         return ("")
     }
 
+
     const triggerSquare = () => {
-        if (drinks.includes(currentPlayerIndex)) {
-            return getRandomTask
-        } else if (punishments.includes(currentPlayerIndex)) {
-            return getRandomAction
+        console.log(livePlayer.currentSquare)
+        if (drinks.includes(livePlayer.currentSquare)) {
+            // document.getElementById(".task-div").innerHtml = "hello"
+            return getRandomTask()
+        } else if (punishments.includes(livePlayer.currentSquare)) {
+            return getRandomAction()
         } else {
-            return getNoTask
+            return getNoTask()
         }
     }
 
@@ -132,7 +134,7 @@ const Game = () => {
             console.log("removing player for win condition")
             tempPlayers.splice(currentPlayerIndex, 1)
         }
-        
+        triggerSquare()
         let nextPlayerIndex = currentPlayerIndex
         if (nextPlayerIndex + 1 === players.length) {
             nextPlayerIndex = 0
