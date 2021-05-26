@@ -67,7 +67,7 @@ const PlayerForm = ({addPlayer}) => {
             </select>
           </div>
 
-          <input type="submit" className="nes-btn is-primary" name="submit" value="Save" />
+          <input type="submit" className="nes-btn is-primary" name="submit" value="Add" />
         </form>
       </div>
     </React.Fragment>
