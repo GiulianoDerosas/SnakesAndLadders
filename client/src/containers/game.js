@@ -79,7 +79,7 @@ const Game = () => {
             const max = tasks.length
             const randomNumber = Math.floor(Math.random() * max);
             const task = tasks[randomNumber].task
-            setRandomTask(tasks[randomNumber].task)
+            setRandomTask(task)
             setRandomAction("")
             return task
         }
@@ -141,7 +141,7 @@ const Game = () => {
         .then(tasks => setTasks(tasks))
         }, []
     )
-        console.log(players)
+        // console.log(players)
    
 
     useEffect(() => {
