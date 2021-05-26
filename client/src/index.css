@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
-
   margin: 0;
   font-family: 'Press Start 2P', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8,9 +7,12 @@ body {
   font-size: 16px;
 }
 
+html {
+  background-color: #522a2c;
+}
+
 .App {
   background-image: url('https://i.imgur.com/8XIBypg.png');
-  background-repeat: no-repeat scroll;
 }
 
 h1 {
@@ -69,6 +71,9 @@ button.nes-btn.is-success::after {
 }
 
 .rule-toggle {
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 black;
+  margin-top: 20px;
   align-self: center;
   text-align: center;
   display: flex;
@@ -91,8 +96,8 @@ button.nes-btn.is-success::after {
 }
 
 .nes-container.with-title.is-centered {
-  width: 500px;
-  height: 250px;
+  width: 750px;
+  height: 200px;
 }
 
 .task-container {
@@ -150,8 +155,10 @@ button.nes-btn.is-success::after {
 }
 
 .form-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  flex-direction: row;
+  grid-template-rows: 30% 20%;
+  align-content: start;
   justify-content: center;
   justify-items: center;
   width: 240px;

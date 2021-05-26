@@ -35,7 +35,7 @@ return (
             </div>
             <br />
             <div className="dice-container">
-                <button className="nes-btn is-success" onClick={onClick}>Roll Dice</button>
+                <button className="nes-btn is-warning" onClick={onClick}>Roll Dice</button>
             </div>
         </div>
     )

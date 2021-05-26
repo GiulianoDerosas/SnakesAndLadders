@@ -220,10 +220,8 @@ const Game = () => {
         <div className="main-wrapper">
         
             <div className="form-container">
-                <PlayerForm addPlayer={addPlayer}/><br></br><br />
-                <div className="task-screen" 
-                    className="task-button-container"><Tasks livePlayer={livePlayer} previousPlayer={previousPlayer} randomTask={randomTask} randomAction={randomAction}/>
-                </div>
+                <PlayerForm addPlayer={addPlayer}/><br></br>
+                <RuleDisplay />
             </div>
             
             <div className="board">
@@ -234,15 +232,15 @@ const Game = () => {
             <div className="dice-container">
                 <Dice getRoll = {getRoll}/>
                 <br />
-                <button className="nes-btn is-success" onClick={refreshPage}>New Game</button>
+                <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
                 <br />
-                <RuleDisplay />
+                
             </div>
         </div>
         <br />
-        {/* <div 
+        <div 
         className="task-button-container"><Tasks livePlayer={livePlayer} previousPlayer={previousPlayer} randomTask={randomTask} randomAction={randomAction}/>
-        </div> */}
+        </div>
         </React.Fragment>
     )
 
