@@ -190,9 +190,11 @@ const Game = () => {
                 <Players players={players}/>
             </div>
 
-            <div className="dice-container"><Dice getRoll = {getRoll}/>
-                
+            <div className="dice-container">
+                <Dice getRoll = {getRoll}/>
+                <br />
                 <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
+                <br />
                 <RuleDisplay />
             </div>
         </div>
