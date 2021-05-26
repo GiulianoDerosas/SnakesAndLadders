@@ -12,6 +12,7 @@ const Game = () => {
     const [players, setPlayers] = useState([])
     const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
+    const [previousPlayer, setPreviousPlayer] = useState({})
     const [randomTask, setRandomTask] = useState([])
     const [actions, setActions] = useState([])
     const [randomAction, setRandomAction] = useState(null)
@@ -24,6 +25,7 @@ const Game = () => {
     let xAxis = 0;
     let board = [];
     let direction = 1;
+
 
     for (let index = 0; index < tiles * tiles; index++) {
         // add each tile to the array
@@ -38,18 +40,44 @@ const Game = () => {
     }
 
     const ladders = [
-        {start: 10, startxAxis: 710, startyAxis: 710, end: 31, endxAxis: 710, endyAxis: 485},
-        {start: 36, startxAxis: 335, startyAxis: 485, end: 62, endxAxis: 110, endyAxis: 260},
-        {start: 66, startxAxis: 410, startyAxis: 260, end: 74, endxAxis: 485, endyAxis: 185},
-        {start: 21, startxAxis: 35, startyAxis: 560, end: 46, endxAxis: 410, endyAxis: 410},
+        {start: 9, startxAxis: board[9].xAxis, startyAxis: board[9].yAxis, end: 30, endxAxis: board[30].xAxis, endyAxis: board[30].yAxis},
+        {start: 35, startxAxis: board[35].xAxis, startyAxis: board[35].yAxis, end: 61, endxAxis: board[61].xAxis, endyAxis: board[61].yAxis},
+        {start: 65, startxAxis: board[65].xAxis, startyAxis: board[65].yAxis, end: 73, endxAxis: board[73].xAxis, endyAxis: board[73].yAxis},
+        {start: 20, startxAxis: board[20].xAxis, startyAxis: board[20].yAxis, end: 45, endxAxis: board[45].xAxis, endyAxis: board[45].yAxis},
     ]
 
+    let checkLadders = (tempPlayer) => {
+        ladders.forEach((ladder) => {
+            if (ladder.start  === tempPlayer.currentSquare ) {
+                tempPlayer.xAxis = ladder.endxAxis
+                tempPlayer.yAxis = ladder.endyAxis
+                tempPlayer.currentSquare = ladder.end
+                console.log("ladder hit!")
+                let update = refresh + 1
+                setRefresh(update)
+            }
+        })    
+    }
+    
     const snakes = [
-        {start: 23, startxAxis: board[22].xAxis, startyAxis: board[22].yAxis, end: 6, endxAxis: board[5].xAxis, endyAxis: board[5].yAxis},
-        {start: 71, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 34, endxAxis: board[33].xAxis, endyAxis: board[33].yAxis},
-        {start: 83, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 59, endxAxis: board[58].xAxis, endyAxis: board[58].yAxis},
-        {start: 99, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 1, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
+        {start: 22, startxAxis: board[22].xAxis, startyAxis: board[22].yAxis, end: 5, endxAxis: board[5].xAxis, endyAxis: board[5].yAxis},
+        {start: 70, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 33, endxAxis: board[33].xAxis, endyAxis: board[33].yAxis},
+        {start: 82, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 58, endxAxis: board[58].xAxis, endyAxis: board[58].yAxis},
+        {start: 98, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 0, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
+    
+    let checkSnakes = (tempPlayer) => {
+        snakes.forEach((snake) => {
+            if (snake.start  === tempPlayer.currentSquare ) {
+                tempPlayer.xAxis = snake.endxAxis
+                tempPlayer.yAxis = snake.endyAxis
+                tempPlayer.currentSquare = snake.end
+                console.log("snake bite!")
+                let update = refresh + 1
+                setRefresh(update)
+            }
+        })    
+    }
 
     const drinks = [4, 8, 12, 16, 19, 22, 26, 28, 33, 37, 42, 45, 46, 47, 52, 55, 58, 63, 68, 75, 76, 81, 85, 89, 93, 97]
 
@@ -68,7 +96,7 @@ const Game = () => {
     }
 
     const getRoll = (newRoll) => {
-        if(players.length){
+        if(players.length ){
             setLivePlayer(players[currentPlayerIndex])
             updatePlayer(newRoll)
         }
@@ -104,9 +132,9 @@ const Game = () => {
     }
 
     const getNoTask = () => {
-        setRandomTask("")
+        setRandomTask(" got away with it this time!")
         setRandomAction("")
-        return ("")
+        // return ("")
     }
 
 
@@ -135,25 +163,28 @@ const Game = () => {
             let remainder = newPosition - 99
             tempPlayer.xAxis = board[99 - remainder].xAxis
             tempPlayer.yAxis = board[99 - remainder].yAxis 
-            tempPlayer.currentSquare = 99 - remainder
-         
+            tempPlayer.currentSquare = 99 - remainder 
         } else if (newPosition === 99) {
             console.log("removing player for win condition")
             let winner = tempPlayers.splice(currentPlayerIndex, 1)
             checkForEnd(winner)
         }
+        checkLadders(tempPlayer)
+        checkSnakes(tempPlayer)
         triggerSquare()
         let nextPlayerIndex = currentPlayerIndex
+        let previousPlayerIndex = currentPlayerIndex - 1
         if (nextPlayerIndex + 1 === players.length) {
             nextPlayerIndex = 0
-            // setCurrentPlayerIndex(nextPlayerIndex)
+            previousPlayerIndex = players.length - 1
         } else {
             nextPlayerIndex += 1
-            // setCurrentPlayerIndex(nextPlayerIndex)
+            previousPlayerIndex = nextPlayerIndex - 1
         }
         let update = refresh + 1
         setRefresh(update)
         setLivePlayer(players[nextPlayerIndex])
+        setPreviousPlayer(players[previousPlayerIndex])
         setCurrentPlayerIndex(nextPlayerIndex)
     }
 
@@ -190,7 +221,6 @@ const Game = () => {
         
             <div className="dice-container">
                 <PlayerForm addPlayer={addPlayer}/><br></br>
-                {players.name}
             </div>
             
             <div className="board">
@@ -201,14 +231,14 @@ const Game = () => {
             <div className="dice-container">
                 <Dice getRoll = {getRoll}/>
                 <br />
-                <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
+                <button className="nes-btn is-success" onClick={refreshPage}>New Game</button>
                 <br />
                 <RuleDisplay />
             </div>
         </div>
         <br />
         <div 
-        className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
+        className="task-button-container"><Tasks livePlayer={livePlayer} previousPlayer={previousPlayer} randomTask={randomTask} randomAction={randomAction}/>
         </div>
         </React.Fragment>
     )
