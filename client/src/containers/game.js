@@ -143,9 +143,9 @@ const Game = () => {
         <h1>SNAKES & BLADDERED</h1>
         <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
         </header>
+
         <div className="main-wrapper">
         
-
             <div className="dice-container">
                 <PlayerForm addPlayer={addPlayer}/><br></br>
                 {players.name}
@@ -156,12 +156,6 @@ const Game = () => {
             <Players players={players}/>
             </div>
 
-            <div className="dice-container">
-                <Dice livePlayer={livePlayer} getRoll = {getRoll}/>
-                
-                <div className="livePlayer">{livePlayer.name}'s Roll</div>
-            </div>
-            {/* <button>Refresh</button> */}
             <div className="dice-container"><Dice getRoll = {getRoll}/>
             <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
             <button className="nes-btn is-success">Rules</button></div>

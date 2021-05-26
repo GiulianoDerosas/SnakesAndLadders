@@ -19,7 +19,3 @@ const Tasks = ({randomTask, randomAction, noTask}) => {
 };
 
 export default Tasks;
-
-
-
-
