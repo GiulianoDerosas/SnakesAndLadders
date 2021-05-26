@@ -4,13 +4,13 @@ db.dropDatabase();
 
 db.tasks.insertMany([
     {
-        "task": "Take a drink"
+        "task": "Take a drink!"
     },
     {
-        "task": "Take two drinks"
+        "task": "Take two drinks!"
     }, 
     {
-        "task": "Take three drinks"
+        "task": "Take three drinks!"
     },
 ])
 
@@ -36,16 +36,43 @@ db.actions.insertMany([
     {
         "action": "Take a shot"
     },
-])
-
-db.drinks.insertMany([
     {
-        "drink": "Take 1 Gulp!"
+        "action": "Eat the spiciest thing in your house"
     },
     {
-        "drink": "Take 2 Gulp!"
+        "action": "No using the bathroom til the game is over"
     },
     {
-        "drink": "Take 3 Gulp!"
-    }
+        "action": "Everything you say until your next drink has to be shouted"
+    },
+    {
+        "action": "Teaspoon of Mustard for you!"
+    },
+    {
+        "action": "Can't speak until your next drink"
+    },
+    {
+        "action": "Person who rolled before you takes a drink"
+    },
+    {
+        "action": "Perform a rain dance"
+    },
+    {
+        "action": "Draw a moustache on yourself"
+    },
+    {
+        "action": "Give your best dog impression"
+    },
+    {
+        "action": "Recite a poem"
+    },
+    {
+        "action": "Impersonate a chicken"
+    },
+    {
+        "action": "5 Press-Ups"
+    },
+    {
+        "action": "Sing Stayin Alive with your mouth open"
+    },
 ])

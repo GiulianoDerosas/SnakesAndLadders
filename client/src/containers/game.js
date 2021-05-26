@@ -3,11 +3,8 @@ import GameBoard from '../components/GameBoard';
 import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
-import PlayerList from '../components/PlayerList';
 import GameService from '../services/GameService';
 import Tasks from '../components/Tasks';
-import Snakes from '../components/Snakes';
-import Ladders from '../components/Ladders';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
@@ -40,22 +37,24 @@ const Game = () => {
     }
 
     const ladders = [
-        {start: 10, startxAxis: board[10].xAxis, startyAxis: board[10].yAxis, end: 31, endxAxis: board[31].xAxis, endyAxis: board[31].yAxis},
-        {start: 36, startxAxis: board[36].xAxis, startyAxis: board[36].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
-        {start: 66, startxAxis: board[66].xAxis, startyAxis: board[66].yAxis, end: 74, endxAxis: board[74].xAxis, endyAxis: board[74].yAxis},
-        {start: 70, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 94, endxAxs: board[94].xAxis,endyAxis: board[94].yAxis}
+        {start: 10, startxAxis: 710, startyAxis: 710, end: 31, endxAxis: 710, endyAxis: 485},
+        {start: 36, startxAxis: 335, startyAxis: 485, end: 62, endxAxis: 110, endyAxis: 260},
+        {start: 66, startxAxis: 410, startyAxis: 260, end: 74, endxAxis: 485, endyAxis: 185},
+        {start: 21, startxAxis: 35, startyAxis: 560, end: 46, endxAxis: 410, endyAxis: 410},
     ]
 
     const snakes = [
-        {start: 23, startxAxis: board[23].xAxis, startyAxis: board[23].yAxis, end: 6, endxAxis: board[6].xAxis, endyAxis: board[6].yAxis},
-        {start: 71, startxAxis: board[71].xAxis, startyAxis: board[71].yAxis, end: 34, endxAxis: board[34].xAxis, endyAxis: board[34].yAxis},
-        {start: 83, startxAxis: board[83].xAxis, startyAxis: board[83].yAxis, end: 59, endxAxis: board[59].xAxis, endyAxis: board[59].yAxis},
-        {start: 99, startxAxis: board[99].xAxis, startyAxis: board[99].yAxis, end: 1, endxAxis: board[1].xAxis, endyAxis: board[1].yAxis}
+        {start: 23, startxAxis: board[22].xAxis, startyAxis: board[22].yAxis, end: 6, endxAxis: board[5].xAxis, endyAxis: board[5].yAxis},
+        {start: 71, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 34, endxAxis: board[33].xAxis, endyAxis: board[33].yAxis},
+        {start: 83, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 59, endxAxis: board[58].xAxis, endyAxis: board[58].yAxis},
+        {start: 99, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 1, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
 
     const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
 
     const punishments = [2, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
+
+    console.log(board)
 
     const addPlayer = newPlayer => {
 
@@ -137,17 +136,32 @@ const Game = () => {
 
     return (
         <>
+
+        <header className="header">
+
+        <img className="logo-2" src="https://i.ibb.co/MDwn8vD/Snake.png" alt="Snake" border="0"/>
+        <h1>SNAKES & BLADDERED</h1>
+        <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
+        </header>
         <div className="main-wrapper">
+        
 
-            <div><PlayerForm addPlayer={addPlayer}/></div>
+            <div className="dice-container">
+                <PlayerForm addPlayer={addPlayer}/><br></br>
+                {players.name}
+            </div>
             
-
             <div className="board">
-            <GameBoard board={board} ladders={ladders} />
+            <GameBoard board={board} ladders={ladders} snakes={snakes} />
             <Players players={players}/>
-            {/* <Ladders ladders={ladders} /> */}
             </div>
 
+            <div className="dice-container">
+                <Dice livePlayer={livePlayer} getRoll = {getRoll}/>
+                
+                <div className="livePlayer">{livePlayer.name}'s Roll</div>
+            </div>
+            {/* <button>Refresh</button> */}
             <div className="dice-container"><Dice getRoll = {getRoll}/>
             <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
             <button className="nes-btn is-success">Rules</button></div>
