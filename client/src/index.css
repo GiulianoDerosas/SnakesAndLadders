@@ -45,6 +45,30 @@ h1 {
   margin-bottom: 10px;
 }
 
+button.nes-btn.is-success::after {
+  align-self: center;
+  justify-content: center;
+}
+
+.rulesbutton {
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rulesbutton::after {
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rule-toggle {
+  align-self: center;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .nes-btn.is-error {
   width: 200px;
   justify-content: center;
@@ -53,9 +77,7 @@ h1 {
 .nes-btn.is-warning {
   width: 200px;
   align-self: center;
-  /* text-decoration-color: white;
-  text-emphasis-color: white; */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .title {
@@ -172,8 +194,9 @@ h1 {
 }
 
 .fade-quote {
-  animation: fadeIn linear 4s;
-  -webkit-animation: fadeIn linear 4s;
+  animation: fadeIn linear 10s;
+  -webkit-animation: fadeIn linear 10s;
+
 
 }
 
@@ -182,3 +205,4 @@ h1 {
   66% {opacity:0;}
   100% {opacity:1;}
 }
+

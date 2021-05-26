@@ -1,25 +1,19 @@
 import React from 'react';
 
-const Tasks = ({randomTask, randomAction, noTask}) => {
+const Tasks = ({randomTask, randomAction, noTask, previousPlayer, livePlayer}) => {
 
 
     return (
  
     <div className="task-container">
       <div className="nes-container with-title is-centered">
-        <h2 className="title">Tasks!</h2>
-        <p className="flashing-tasks">{randomTask}</p>
-        <p className="flashing-tasks">{randomAction}</p>
-        <p className="flashing-tasks">{noTask}</p>
+        <h2 className="title">Player Tasks!</h2>
+        <p className="fade-quote">{livePlayer.name}'s Roll</p>
         <br></br>
-        <p className="fade-quote">"24 hours in a day. 24 beers in a case. Coincidence? I think not." ~ H.L. Mencken"</p>
+        <p className="flashing-tasks">{previousPlayer.name}{randomTask}{randomAction}{noTask}</p>
       </div>
     </div>
     )
 };
 
 export default Tasks;
-
-
-
-
