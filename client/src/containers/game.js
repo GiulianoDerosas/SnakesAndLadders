@@ -40,7 +40,7 @@ const Game = () => {
         {start: 10, startxAxis: 710, startyAxis: 710, end: 31, endxAxis: 710, endyAxis: 485},
         {start: 36, startxAxis: 335, startyAxis: 485, end: 62, endxAxis: 110, endyAxis: 260},
         {start: 66, startxAxis: 410, startyAxis: 260, end: 74, endxAxis: 485, endyAxis: 185},
-        {start: 70, startxAxis: 710, startyAxis: 260, end: 94, endxAxs: 485, endyAxis: 35}
+        {start: 21, startxAxis: 35, startyAxis: 560, end: 46, endxAxis: 410, endyAxis: 410},
     ]
 
     const snakes = [
