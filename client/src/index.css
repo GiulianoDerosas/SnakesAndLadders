@@ -7,6 +7,10 @@ body {
   font-size: 16px;
 }
 
+h1 {
+  text-align: center;
+}
+
 .canvas {
   grid-row: 1;
   align-self: center;
@@ -44,6 +48,14 @@ body {
 .nes-btn.is-error {
   width: 200px;
   justify-content: center;
+}
+
+.nes-btn.is-warning {
+  width: 200px;
+  align-self: center;
+  /* text-decoration-color: white;
+  text-emphasis-color: white; */
+  margin-bottom: 20px;
 }
 
 .title {
