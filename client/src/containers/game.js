@@ -15,6 +15,8 @@ const Game = () => {
     const [playerCounter, setPlayerCounter] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
     const [randomTask, setRandomTask] = useState(null)
+    const [actions, setActions] = useState([])
+    const [randomAction, setRandomAction] = useState(null)
     const [refresh, setRefresh] = useState(0)
     
     const boardSize = 750;
@@ -143,6 +145,7 @@ const Game = () => {
             <div className="board">
             <GameBoard board={board} ladders={ladders} />
             <Players players={players}/>
+            {/* <Ladders ladders={ladders} /> */}
             </div>
 
             <div className="dice-container"><Dice getRoll = {getRoll}/>
@@ -151,8 +154,6 @@ const Game = () => {
         </div>
 
         <div className="task-button-container">
-
-            {/* <Tasks tasks={tasks} getRandomTask={getRandomTask}/> */}
             <button className="task-button" onClick={getRandomTask}>Click me: Task</button>
             <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
             <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
