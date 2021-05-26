@@ -177,8 +177,9 @@ const Game = () => {
         <h1>SNAKES & BLADDERED</h1>
         <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
         </header>
-       
+
         <div className="main-wrapper">
+        
             <div className="dice-container">
                 <PlayerForm addPlayer={addPlayer}/><br></br>
                 {players.name}

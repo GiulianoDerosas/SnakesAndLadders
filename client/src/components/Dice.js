@@ -1,29 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Dice = ({getRoll, livePlayer}) => {
+const Dice = ({getRoll}) => {
 
     let newRoll
-    
     function onClick() {
         newRoll = Math.floor(Math.random() * 6) + 1;
         if (newRoll === 1) {
             document.querySelector(".dice-image").setAttribute("src",
-            "https://media.geeksforgeeks.org/wp-content/uploads/20200508141000/dice1.png")
+            "https://i.ibb.co/wNVtBmy/dice1.png")
         } else if (newRoll === 2) {
             document.querySelector(".dice-image").setAttribute("src",
-            "https://media.geeksforgeeks.org/wp-content/uploads/20200508141001/dice2.png")
-        } else {
-        document.querySelector(".dice-image").setAttribute("src",
-        "https://media.geeksforgeeks.org/wp-content/uploads/2020050814100"+newRoll+"/dice" + newRoll +".png")}
+            "https://i.ibb.co/9sZWS55/dice2.png")
+        } else if (newRoll === 3) {
+            document.querySelector(".dice-image").setAttribute("src",
+            "https://i.ibb.co/m5MRw6C/dice3.png")
+        } else if (newRoll === 4) {
+            document.querySelector(".dice-image").setAttribute("src",
+            "https://i.ibb.co/PQqZjdh/dice4.png")
+        } else if (newRoll === 5) {
+            document.querySelector(".dice-image").setAttribute("src",
+            "https://i.ibb.co/ZXFt9Ry/dice5.png")
+        } else if (newRoll === 6) {
+            document.querySelector(".dice-image").setAttribute("src",
+            "https://i.ibb.co/VLcm8HC/dice6.png")
+        }
+        console.log(newRoll);
         getRoll(newRoll)
     }
-
-
 
 return (
         <div>
             <div className="dice">
-                <img className="dice-image" alt="" src="https://media.istockphoto.com/vectors/drunk-guy-with-two-bottles-of-beerwine-cartoon-pixel-art-character-vector-id1147100739"/>
+                <img className="dice-image" alt="" src="https://i.ibb.co/wNVtBmy/dice1.png"/>
             </div>
 
             <div className="dice-container">
