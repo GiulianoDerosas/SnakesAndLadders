@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
-const PlayerForm = ({ addPlayer }) => {
+import React, { useState } from 'react';
+const PlayerForm = ({addPlayer}) => {
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
   const [xAxis] = useState(0)
@@ -12,7 +11,7 @@ const PlayerForm = ({ addPlayer }) => {
   const handleColorChange = (ev) => setColor(ev.target.value);
 
   const handleSubmit = ev => {
-
+    console.log("hello, deirdre",ID)
     ev.preventDefault();
     if (ID < 5) {
       addPlayer({
@@ -21,7 +20,7 @@ const PlayerForm = ({ addPlayer }) => {
         color: color,
         xAxis: xAxis,
         yAxis: yAxis,
-        currentSquare: currentSquare
+        currentSquare: currentSquare 
       });
       let newID = ID + 1
       setID(newID)
@@ -33,7 +32,7 @@ const PlayerForm = ({ addPlayer }) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <div className="add-player-container">
         <form className="add-player" onSubmit={handleSubmit}>
           <h3 className="nes-text is-primary">Add a player</h3>
@@ -71,7 +70,7 @@ const PlayerForm = ({ addPlayer }) => {
           <input type="submit" className="nes-btn is-primary" name="submit" value="Add" />
         </form>
       </div>
-    </>
+    </React.Fragment>
   )
 };
 

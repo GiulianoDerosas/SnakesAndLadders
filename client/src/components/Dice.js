@@ -29,8 +29,7 @@ const Dice = ({getRoll}) => {
     }
 
 return (
-        <>
-
+        <div>
             <div className="dice">
                 <img className="dice-image" alt="" src="https://i.ibb.co/wNVtBmy/dice1.png"/>
             </div>
@@ -38,8 +37,7 @@ return (
             <div className="dice-container">
                 <button className="nes-btn is-success" onClick={onClick}>Roll Dice</button>
             </div>
-
-        </>
+        </div>
     )
 
 }
