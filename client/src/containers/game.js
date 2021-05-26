@@ -126,7 +126,7 @@ const Game = () => {
 
     const checkForEnd = (array) => {
         if (array.length > 0) {
-            window.alert(`${array[0].name} Won! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            window.alert(`${array[0].name} won! Congratulations! The game will now reset, hope you had fun and are still standing`)
             refreshPage()
         } 
     }
@@ -134,14 +134,12 @@ const Game = () => {
     const getNoTask = () => {
         setRandomTask(" got away with it this time!")
         setRandomAction("")
-        // return ("")
     }
 
 
     const triggerSquare = () => {
         console.log(livePlayer.currentSquare)
         if (drinks.includes(livePlayer.currentSquare)) {
-            // document.getElementById(".task-div").innerHtml = "hello"
             return getRandomTask()
         } else if (punishments.includes(livePlayer.currentSquare)) {
             return getRandomAction()
