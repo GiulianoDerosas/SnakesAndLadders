@@ -12,7 +12,7 @@ const Game = () => {
     const [players, setPlayers] = useState([])
     const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
-    const [randomTask, setRandomTask] = useState(null)
+    const [randomTask, setRandomTask] = useState([])
     const [actions, setActions] = useState([])
     const [randomAction, setRandomAction] = useState(null)
     const [refresh, setRefresh] = useState(0)
@@ -78,9 +78,9 @@ const Game = () => {
         })    
     }
 
-    const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
+    const drinks = [4, 8, 12, 16, 19, 22, 26, 28, 33, 37, 42, 45, 46, 47, 52, 55, 58, 63, 68, 75, 76, 81, 85, 89, 93, 97]
 
-    const punishments = [2, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
+    const punishments = [3, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
 
     console.log(board)
 
@@ -106,7 +106,7 @@ const Game = () => {
             const max = tasks.length
             const randomNumber = Math.floor(Math.random() * max);
             const task = tasks[randomNumber].task
-            setRandomTask(tasks[randomNumber].task)
+            setRandomTask(task)
             setRandomAction("")
             return task
         }
@@ -123,10 +123,30 @@ const Game = () => {
         }
     }
 
+    const checkForEnd = (array) => {
+        if (array.length > 0) {
+            window.alert(`The winner is ${array[0].name}! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            refreshPage()
+        } 
+    }
+
     const getNoTask = () => {
         setRandomTask("")
         setRandomAction("")
         return ("")
+    }
+
+
+    const triggerSquare = () => {
+        console.log(livePlayer.currentSquare)
+        if (drinks.includes(livePlayer.currentSquare)) {
+            // document.getElementById(".task-div").innerHtml = "hello"
+            return getRandomTask()
+        } else if (punishments.includes(livePlayer.currentSquare)) {
+            return getRandomAction()
+        } else {
+            return getNoTask()
+        }
     }
 
     const updatePlayer = (newRoll) => {
@@ -144,12 +164,13 @@ const Game = () => {
             tempPlayer.yAxis = board[99 - remainder].yAxis 
             tempPlayer.currentSquare = 99 - remainder 
         } else if (newPosition === 99) {
-            tempPlayers.splice(currentPlayerIndex, 1)
+            console.log("removing player for win condition")
+            let winner = tempPlayers.splice(currentPlayerIndex, 1)
+            checkForEnd(winner)
         }
-
         checkLadders(tempPlayer)
         checkSnakes(tempPlayer)
-        
+        triggerSquare()
         let nextPlayerIndex = currentPlayerIndex
         if (nextPlayerIndex + 1 === players.length) {
             nextPlayerIndex = 0
@@ -169,7 +190,7 @@ const Game = () => {
         .then(tasks => setTasks(tasks))
         }, []
     )
-        console.log(players)
+        // console.log(players)
    
 
     useEffect(() => {
@@ -192,8 +213,9 @@ const Game = () => {
         <h1>SNAKES & BLADDERED</h1>
         <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
         </header>
-       
+
         <div className="main-wrapper">
+        
             <div className="dice-container">
                 <PlayerForm addPlayer={addPlayer}/><br></br>
                 {players.name}
@@ -204,19 +226,15 @@ const Game = () => {
                 <Players players={players}/>
             </div>
 
-            <div className="dice-container"><Dice getRoll = {getRoll}/>
-                
+            <div className="dice-container">
+                <Dice getRoll = {getRoll}/>
+                <br />
                 <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
+                <br />
                 <RuleDisplay />
             </div>
         </div>
-
-        <div className="task-button-container">
-            <button className="task-button" onClick={getRandomTask}>Click me: Task</button>
-            <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
-            <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
-        </div>
-
+        <br />
         <div 
         className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
         </div>
