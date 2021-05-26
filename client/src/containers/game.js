@@ -46,6 +46,8 @@ const Game = () => {
         {start: 71, startxAxis: board[71].xAxis, startyAxis: board[71].yAxis, end: 94, endxAxis: board[94].xAxis, endyAxis: board[94].yAxis},
     ]
 
+    const laddersStart = [9, 35, 65, 71]
+
     let checkLadders = (tempPlayer) => {
         ladders.forEach((ladder) => {
             if (ladder.start  === tempPlayer.currentSquare ) {
@@ -65,6 +67,8 @@ const Game = () => {
         {start: 82, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
         {start: 98, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 0, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
+
+    const snakesStart = [22,70,82,98]
     
     let checkSnakes = (tempPlayer) => {
         snakes.forEach((snake) => {
@@ -136,6 +140,15 @@ const Game = () => {
         setRandomAction("")
     }
 
+    const getLadder = () => {
+        setRandomTask(" found a ladder!")
+        setRandomAction("")
+    }
+    
+    const getSnake = () => {
+        setRandomTask(" 0 - snake 1")
+        setRandomAction("")
+    }
 
     const triggerSquare = () => {
         console.log(livePlayer.currentSquare)
@@ -143,6 +156,10 @@ const Game = () => {
             return getRandomTask()
         } else if (punishments.includes(livePlayer.currentSquare)) {
             return getRandomAction()
+        } else if (snakesStart.includes(livePlayer.currentSquare)) {
+            return getSnake()
+        } else if (laddersStart.includes(livePlayer.currentSquare)) {
+            return getLadder()
         } else {
             return getNoTask()
         }
