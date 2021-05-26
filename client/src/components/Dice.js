@@ -33,7 +33,7 @@ return (
             <div className="dice">
                 <img className="dice-image" alt="" src="https://i.ibb.co/wNVtBmy/dice1.png"/>
             </div>
-
+            <br />
             <div className="dice-container">
                 <button className="nes-btn is-success" onClick={onClick}>Roll Dice</button>
             </div>

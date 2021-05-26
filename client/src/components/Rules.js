@@ -3,7 +3,7 @@ import React from 'react';
 const Rules = () => {
 
     return (
-        <p>Here are the rules</p>
+        <p className="rule-toggle">Here are the rules</p>
     )
 
 }
