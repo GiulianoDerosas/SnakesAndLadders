@@ -53,6 +53,7 @@ const Game = () => {
                 tempPlayer.yAxis = ladder.endyAxis
                 tempPlayer.currentSquare = ladder.end
                 console.log("ladder hit!")
+                getLadder()
                 let update = refresh + 1
                 setRefresh(update)
             }
@@ -65,7 +66,7 @@ const Game = () => {
         {start: 82, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
         {start: 98, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 0, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
-    
+
     let checkSnakes = (tempPlayer) => {
         snakes.forEach((snake) => {
             if (snake.start  === tempPlayer.currentSquare ) {
@@ -73,6 +74,7 @@ const Game = () => {
                 tempPlayer.yAxis = snake.endyAxis
                 tempPlayer.currentSquare = snake.end
                 console.log("snake bite!")
+                getSnake()
                 let update = refresh + 1
                 setRefresh(update)
             }
@@ -126,7 +128,7 @@ const Game = () => {
 
     const checkForEnd = (array) => {
         if (array.length > 0) {
-            window.alert(`${array[0].name} Won! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            window.alert(`${array[0].name} won! Congratulations! The game will now reset, hope you had fun and are still standing`)
             refreshPage()
         } 
     }
@@ -134,14 +136,21 @@ const Game = () => {
     const getNoTask = () => {
         setRandomTask(" got away with it this time!")
         setRandomAction("")
-        // return ("")
     }
 
+    const getLadder = () => {
+        setRandomTask(" found a ladder!")
+        setRandomAction("")
+    }
+    
+    const getSnake = () => {
+        setRandomTask(" 0 - snake 1")
+        setRandomAction("")
+    }
 
-    const triggerSquare = () => {
+    const triggerSquare = (newRoll) => {
         console.log(livePlayer.currentSquare)
         if (drinks.includes(livePlayer.currentSquare)) {
-            // document.getElementById(".task-div").innerHtml = "hello"
             return getRandomTask()
         } else if (punishments.includes(livePlayer.currentSquare)) {
             return getRandomAction()
