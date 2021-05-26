@@ -6,7 +6,6 @@ const Canvas = ({drawItem}) => {
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-        //Our first draw
         drawItem(context)
     }, [drawItem])
 
@@ -14,4 +13,3 @@ const Canvas = ({drawItem}) => {
 }
 
 export default Canvas
-// width="750" height="750" 
