@@ -195,13 +195,7 @@ const Game = () => {
                 <RuleDisplay />
             </div>
         </div>
-
-        <div className="task-button-container">
-            <button className="task-button" onClick={getRandomTask}>Click me: Task</button>
-            <button className="task-button" onClick={getRandomAction}>Click me: Action</button>
-            <button className="task-button" onClick={getNoTask}>Click me: Empty Square</button>
-        </div>
-
+        <br />
         <div 
         className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
         </div>
