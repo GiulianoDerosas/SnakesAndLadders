@@ -43,7 +43,7 @@ const Game = () => {
         {start: 9, startxAxis: board[9].xAxis, startyAxis: board[9].yAxis, end: 30, endxAxis: board[30].xAxis, endyAxis: board[30].yAxis},
         {start: 35, startxAxis: board[35].xAxis, startyAxis: board[35].yAxis, end: 61, endxAxis: board[61].xAxis, endyAxis: board[61].yAxis},
         {start: 65, startxAxis: board[65].xAxis, startyAxis: board[65].yAxis, end: 73, endxAxis: board[73].xAxis, endyAxis: board[73].yAxis},
-        {start: 20, startxAxis: board[20].xAxis, startyAxis: board[20].yAxis, end: 45, endxAxis: board[45].xAxis, endyAxis: board[45].yAxis},
+        {start: 71, startxAxis: board[71].xAxis, startyAxis: board[71].yAxis, end: 94, endxAxis: board[94].xAxis, endyAxis: board[94].yAxis},
     ]
 
     let checkLadders = (tempPlayer) => {
@@ -62,7 +62,7 @@ const Game = () => {
     const snakes = [
         {start: 22, startxAxis: board[22].xAxis, startyAxis: board[22].yAxis, end: 5, endxAxis: board[5].xAxis, endyAxis: board[5].yAxis},
         {start: 70, startxAxis: board[70].xAxis, startyAxis: board[70].yAxis, end: 33, endxAxis: board[33].xAxis, endyAxis: board[33].yAxis},
-        {start: 82, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 58, endxAxis: board[58].xAxis, endyAxis: board[58].yAxis},
+        {start: 82, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
         {start: 98, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 0, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
     
@@ -79,9 +79,9 @@ const Game = () => {
         })    
     }
 
-    const drinks = [4, 8, 12, 16, 19, 22, 26, 28, 33, 37, 42, 45, 46, 47, 52, 55, 58, 63, 68, 75, 76, 81, 85, 89, 93, 97]
+    const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
 
-    const punishments = [3, 5, 13, 24, 35, 39, 49, 50, 56, 60, 64, 69, 77, 86, 90, 92, 96]
+    const punishments = [2, 6, 13, 24, 36, 39, 49, 56, 60, 64, 69, 77, 83, 91, 92, 96]
 
     console.log(board)
 
@@ -126,7 +126,7 @@ const Game = () => {
 
     const checkForEnd = (array) => {
         if (array.length > 0) {
-            window.alert(`The winner is ${array[0].name}! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            window.alert(`${array[0].name} Won! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
             refreshPage()
         } 
     }
