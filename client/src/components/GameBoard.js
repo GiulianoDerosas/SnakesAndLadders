@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from "react"
 import Canvas from "./Canvas"
 
 const GameBoard = ({ board, ladders, snakes }) => {

@@ -3,13 +3,14 @@ import GameBoard from '../components/GameBoard';
 import Players from '../components/Players';
 import Dice from '../components/Dice';
 import PlayerForm from '../components/PlayerForm';
+import RuleDisplay from '../components/RuleDisplay';
 import GameService from '../services/GameService';
 import Tasks from '../components/Tasks';
 
 const Game = () => {
     const [tasks, setTasks] = useState([])
     const [players, setPlayers] = useState([])
-    const [playerCounter, setPlayerCounter] = useState(0)
+    const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
     const [livePlayer, setLivePlayer] = useState({})
     const [randomTask, setRandomTask] = useState(null)
     const [actions, setActions] = useState([])
@@ -67,8 +68,10 @@ const Game = () => {
     }
 
     const getRoll = (newRoll) => {
-        setLivePlayer(players[playerCounter])
-        updatePlayer(newRoll)
+        if(players.length){
+            setLivePlayer(players[currentPlayerIndex])
+            updatePlayer(newRoll)
+        }
     }
 
     const getRandomTask = () => {
@@ -101,21 +104,36 @@ const Game = () => {
 
     const updatePlayer = (newRoll) => {
         let tempPlayer = livePlayer
-        console.log(tempPlayer)
+        let tempPlayers = players
+        
         let newPosition = tempPlayer.currentSquare + newRoll
-        tempPlayer.xAxis = board[newPosition].xAxis
-        tempPlayer.yAxis = board[newPosition].yAxis
-        tempPlayer.currentSquare = newPosition
-        let counter = playerCounter
-        if (counter + 1 === players.length) {
-            counter = 0
+        if (newPosition < 99 ) {
+            tempPlayer.xAxis = board[newPosition].xAxis
+            tempPlayer.yAxis = board[newPosition].yAxis
+            tempPlayer.currentSquare = newPosition
+        } else if (newPosition > 99) {
+            let remainder = newPosition - 99
+            tempPlayer.xAxis = board[99 - remainder].xAxis
+            tempPlayer.yAxis = board[99 - remainder].yAxis 
+            tempPlayer.currentSquare = 99 - remainder
+         
+        } else if (newPosition === 99) {
+            console.log("removing player for win condition")
+            tempPlayers.splice(currentPlayerIndex, 1)
+        }
+        
+        let nextPlayerIndex = currentPlayerIndex
+        if (nextPlayerIndex + 1 === players.length) {
+            nextPlayerIndex = 0
+            // setCurrentPlayerIndex(nextPlayerIndex)
         } else {
-            counter += 1
+            nextPlayerIndex += 1
+            // setCurrentPlayerIndex(nextPlayerIndex)
         }
         let update = refresh + 1
         setRefresh(update)
-        setLivePlayer(players[counter])
-        setPlayerCounter(counter)
+        setLivePlayer(players[nextPlayerIndex])
+        setCurrentPlayerIndex(nextPlayerIndex)
     }
 
     useEffect(() => {
@@ -123,6 +141,8 @@ const Game = () => {
         .then(tasks => setTasks(tasks))
         }, []
     )
+        console.log(players)
+   
 
     useEffect(() => {
         GameService.getActions()
@@ -134,37 +154,33 @@ const Game = () => {
         window.location.reload(false);
     }
 
+    
+        
     return (
-        <>
-
+        <React.Fragment>
         <header className="header">
 
         <img className="logo-2" src="https://i.ibb.co/MDwn8vD/Snake.png" alt="Snake" border="0"/>
         <h1>SNAKES & BLADDERED</h1>
         <img className="logo" src="https://i.ibb.co/k1fsMPT/Icon-Color-11.png" alt="Icon-Color-11" border="0"/>
         </header>
+       
         <div className="main-wrapper">
-        
-
             <div className="dice-container">
                 <PlayerForm addPlayer={addPlayer}/><br></br>
                 {players.name}
             </div>
             
             <div className="board">
-            <GameBoard board={board} ladders={ladders} snakes={snakes} />
-            <Players players={players}/>
+                <GameBoard board={board} ladders={ladders} snakes={snakes} />
+                <Players players={players}/>
             </div>
 
-            <div className="dice-container">
-                <Dice livePlayer={livePlayer} getRoll = {getRoll}/>
-                
-                <div className="livePlayer">{livePlayer.name}'s Roll</div>
-            </div>
-            {/* <button>Refresh</button> */}
             <div className="dice-container"><Dice getRoll = {getRoll}/>
-            <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
-            <button className="nes-btn is-success">Rules</button></div>
+                
+                <button className="nes-btn is-warning" onClick={refreshPage}>New Game</button>
+                <RuleDisplay />
+            </div>
         </div>
 
         <div className="task-button-container">
@@ -176,7 +192,7 @@ const Game = () => {
         <div 
         className="task-button-container"><Tasks randomTask={randomTask} randomAction={randomAction}/>
         </div>
-        </>
+        </React.Fragment>
     )
 
 }
