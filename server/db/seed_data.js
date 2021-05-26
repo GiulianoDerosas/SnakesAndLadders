@@ -4,75 +4,75 @@ db.dropDatabase();
 
 db.tasks.insertMany([
     {
-        "task": " take a drink!"
+        "task": " takes a drink!"
     },
     {
-        "task": " take two drinks!"
+        "task": " takes two drinks!"
     }, 
     {
-        "task": " take three drinks!"
+        "task": " takes three drinks!"
     },
 ])
 
 db.actions.insertMany([
     {
-        "action": " nominate another player to finish their vessel"
+        "action": ", nominate another player to finish their vessel"
     },
     {
-        "action": " shotgun, last person takes a drink"
+        "action": " calls shotgun, last person takes a drink"
     },
     {
-        "action": " nominate another player to drink"
+        "action": ", nominate another player to drink"
     },
     {
-        "action": " finish your vessel"
+        "action": " has to finish their vessel"
     },
     {
-        "action": " stand until your next turn is over"
+        "action": " has to stand until their next turn is over"
     },
     {
         "action": " can't use your hands to drink for a round"
     },
     {
-        "action": " take a shot"
+        "action": " has to take a shot"
     },
     {
-        "action": " eat the spiciest thing in your house"
+        "action": ", eat the spiciest thing in your house"
     },
     {
-        "action": " no using the bathroom til the game is over"
+        "action": " can't use the bathroom til the game is over"
     },
     {
-        "action": " everything you say until your next drink has to be shouted"
+        "action": ", everything you say until your next drink has to be shouted"
     },
     {
-        "action": " teaspoon of Mustard for you!"
+        "action": ", teaspoon of Mustard for you!"
     },
     {
-        "action": " can't speak until your next drink"
+        "action": " can't speak until their next drink"
     },
     {
-        "action": " person who rolled before you takes a drink"
+        "action": ", person who rolled before you takes a drink"
     },
     {
-        "action": " perform a rain dance"
+        "action": " has to perform a rain dance"
     },
     {
-        "action": " draw a moustache on yourself"
+        "action": ", draw a moustache on yourself"
     },
     {
-        "action": " give your best dog impression"
+        "action": ", give your best dog impression"
     },
     {
-        "action": " recite a poem"
+        "action": " has to recite a poem"
     },
     {
-        "action": " impersonate a chicken"
+        "action": ", impersonate a chicken"
     },
     {
-        "action": " 5 Press-Ups"
+        "action": " has to do 5 Press-Ups"
     },
     {
-        "action": " sing Stayin Alive with your mouth open"
+        "action": ", trying singing Stayin Alive with your mouth open"
     },
 ])
