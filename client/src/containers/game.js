@@ -52,7 +52,6 @@ const Game = () => {
                 tempPlayer.xAxis = ladder.endxAxis
                 tempPlayer.yAxis = ladder.endyAxis
                 tempPlayer.currentSquare = ladder.end
-                console.log("ladder hit!")
                 let update = refresh + 1
                 setRefresh(update)
             }
@@ -82,8 +81,6 @@ const Game = () => {
     const drinks = [3, 8, 16, 19, 28, 45, 46, 47, 58, 68, 75, 76, 81, 85, 89, 93, 97]
 
     const punishments = [2, 6, 13, 24, 36, 39, 49, 56, 60, 64, 69, 77, 83, 91, 92, 96]
-
-    console.log(board)
 
     const addPlayer = newPlayer => {
 
@@ -134,14 +131,11 @@ const Game = () => {
     const getNoTask = () => {
         setRandomTask(" got away with it this time!")
         setRandomAction("")
-        // return ("")
     }
 
 
     const triggerSquare = () => {
-        console.log(livePlayer.currentSquare)
         if (drinks.includes(livePlayer.currentSquare)) {
-            // document.getElementById(".task-div").innerHtml = "hello"
             return getRandomTask()
         } else if (punishments.includes(livePlayer.currentSquare)) {
             return getRandomAction()
@@ -193,9 +187,7 @@ const Game = () => {
         .then(tasks => setTasks(tasks))
         }, []
     )
-        // console.log(players)
    
-
     useEffect(() => {
         GameService.getActions()
         .then(actions => setActions(actions))
