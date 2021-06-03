@@ -1,14 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: 'Press Start 2P', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+html {
+  background-color: #522a2c;
+}
+
+.App {
+  background-image: url('https://i.imgur.com/8XIBypg.png');
+}
+
+h1 {
+  text-align: center;
+}
+
+.canvas {
+  grid-row: 1;
+  align-self: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 0;
+}
+
+.add-player-container {
+  display: grid;
+  justify-content: center;
+  width: 200px;
+}
+
+.add-player {
+  display: grid;
+  flex-direction: column;
+  height: 300px;
+  width: 400px;
+}
+
+.nes-btn.is-primary {
+  width: 200px;
+  align-self: center;
+}
+
+.nes-btn.is-success {
+  width: 200px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+button.nes-btn.is-success::after {
+  align-self: center;
+  justify-content: center;
+}
+
+.rulesbutton {
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rulesbutton::after {
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rule-toggle {
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 black;
+  margin-top: 20px;
+  align-self: center;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nes-btn.is-error {
+  width: 200px;
+  justify-content: center;
+}
+
+.nes-btn.is-warning {
+  width: 200px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  text-align: center;
+}
+
+.nes-container.with-title.is-centered {
+  width: 750px;
+  height: 200px;
+}
+
+.task-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+}
+
+.rule-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0%;
+}
+
+.task-button {
+  display: flex;
+  justify-content: center;
+}
+
+.task-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.row-rules {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dice-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  width: 240px;
+}
+
+.task-screen {
+  padding-left: 20px;
+  padding-right: 100px;
+}
+
+.form-container {
+  display: grid;
+  flex-direction: row;
+  grid-template-rows: 30% 20%;
+  align-content: start;
+  justify-content: center;
+  justify-items: center;
+  width: 240px;
+}
+
+.dice-image {
+  max-width:113px;
+  max-height:113px;
+  justify-content:center;
+}
+
+.dice {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  color: white;
+  justify-content: center;
+  height: 70px;
+  text-align: center;
+  background-color: #d96b32;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  height: 60px;
+}
+
+.logo-2 {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  height: 60px;
+  margin-right: 4px;
+}
+
+.livePlayer {
+  text-align: center;
+}
+
+
+/* Flashes 3 times for the task */
+.flashing-tasks {
+  font-weight: 100;
+  font-size: 16px;
+  color: #222e37;
+  -webkit-animation: 0.8s blink step-end 3;
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
   }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+  50% {
+    color: black;
   }
-  
+}
+
+.fade-quote {
+  animation: fadeIn linear 10s;
+  -webkit-animation: fadeIn linear 10s;
+
+
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  66% {opacity:0;}
+  100% {opacity:1;}
+}
+

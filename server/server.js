@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 
@@ -15,7 +14,10 @@ MongoClient.connect('mongodb://localhost:27017')
     const db = client.db('snakes_and_ladders');
     const taskCollection = db.collection('tasks');
     const taskRouter = createRouter(taskCollection);
-    app.use(('/tasks'), taskRouter);
+    app.use(('/api/tasks'), taskRouter);
+    const taskCollection2 = db.collection('actions');
+    const taskRouter2 = createRouter(taskCollection2);
+    app.use(('/api/actions'), taskRouter2);
 });
 
 app.listen(5000, function() {
