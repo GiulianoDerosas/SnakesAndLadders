@@ -52,6 +52,11 @@ const Game = () => {
                 tempPlayer.xAxis = ladder.endxAxis
                 tempPlayer.yAxis = ladder.endyAxis
                 tempPlayer.currentSquare = ladder.end
+<<<<<<< HEAD
+=======
+                console.log("ladder hit!")
+                getLadder()
+>>>>>>> 877aeb8be191be3ae0b4c7fed0d5a6c0d43c2e08
                 let update = refresh + 1
                 setRefresh(update)
             }
@@ -64,7 +69,7 @@ const Game = () => {
         {start: 82, startxAxis: board[82].xAxis, startyAxis: board[82].yAxis, end: 62, endxAxis: board[62].xAxis, endyAxis: board[62].yAxis},
         {start: 98, startxAxis: board[98].xAxis, startyAxis: board[98].yAxis, end: 0, endxAxis: board[0].xAxis, endyAxis: board[0].yAxis}
     ]
-    
+
     let checkSnakes = (tempPlayer) => {
         snakes.forEach((snake) => {
             if (snake.start  === tempPlayer.currentSquare ) {
@@ -72,6 +77,7 @@ const Game = () => {
                 tempPlayer.yAxis = snake.endyAxis
                 tempPlayer.currentSquare = snake.end
                 console.log("snake bite!")
+                getSnake()
                 let update = refresh + 1
                 setRefresh(update)
             }
@@ -123,7 +129,7 @@ const Game = () => {
 
     const checkForEnd = (array) => {
         if (array.length > 0) {
-            window.alert(`${array[0].name} Won! Congratulations! The game will now reset, hope you had fun and are still standing :)`)
+            window.alert(`${array[0].name} won! Congratulations! The game will now reset, hope you had fun and are still standing`)
             refreshPage()
         } 
     }
@@ -133,8 +139,22 @@ const Game = () => {
         setRandomAction("")
     }
 
+    const getLadder = () => {
+        setRandomTask(" found a ladder!")
+        setRandomAction("")
+    }
+    
+    const getSnake = () => {
+        setRandomTask(" 0 - snake 1")
+        setRandomAction("")
+    }
 
+<<<<<<< HEAD
     const triggerSquare = () => {
+=======
+    const triggerSquare = (newRoll) => {
+        console.log(livePlayer.currentSquare)
+>>>>>>> 877aeb8be191be3ae0b4c7fed0d5a6c0d43c2e08
         if (drinks.includes(livePlayer.currentSquare)) {
             return getRandomTask()
         } else if (punishments.includes(livePlayer.currentSquare)) {

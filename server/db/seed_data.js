@@ -31,7 +31,7 @@ db.actions.insertMany([
         "action": " has to stand until their next turn is over"
     },
     {
-        "action": " can't use your hands to drink for a round"
+        "action": " can't use their hands to drink for a round"
     },
     {
         "action": " has to take a shot"
