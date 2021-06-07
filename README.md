@@ -13,5 +13,3 @@ In order to join in the fun please:
 5. Seed the database by running mongodb < db/seed_data.js
 6. Run the database with npm run server:dev
 7. Navigate to client and run the app with npm start  
-
-Please use this app wisely and responsibly.
