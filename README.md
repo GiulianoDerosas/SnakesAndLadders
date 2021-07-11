@@ -9,7 +9,7 @@
 <p align="justify"> 
 This game is a twist on the classic Snakes & Ladders.</p>
 
-<p> As with classic snakes and ladders, a player rolls the dice and their counter moves accordingly; if the player lands on a ladder, they go up, if they hit 
+<p align="justify"> As with classic snakes and ladders, a player rolls the dice and their counter moves accordingly; if the player lands on a ladder, they go up, if they hit 
 a snake, they go down. However in Snakes and Bladdered there are also tiles which generate forfeits and tiles which give players a random amount of drinks.
 </p>
 
@@ -59,8 +59,5 @@ a snake, they go down. However in Snakes and Bladdered there are also tiles whic
 
 <p>Here are a few screenshots from the site:</p>
 
-<img align="justify" src="https://i.ibb.co/zGHGkhR/Screenshot-2021-07-11-at-5-29-28-PM.png" width="1280" />
-<img align="justify" src="https://i.ibb.co/pRY6SBX/Screenshot-2021-07-11-at-5-30-18-PM.png" width="1280" />
-<img align="justify" src="https://i.ibb.co/jvdHRWS/Screenshot-2021-07-11-at-5-31-09-PM.png" width="1280" />
-<img align="justify" src="https://i.ibb.co/pPZpVKF/Screenshot-2021-07-11-at-5-31-23-PM.png" width="1280" />
-<img align="justify" src="https://i.ibb.co/54J8D7G/Screenshot-2021-07-11-at-5-31-46-PM.png" width="1280" />
+<img align="justify" src="https://i.ibb.co/1b4ZRQD/Screenshot-2021-07-11-at-6-13-44-PM.png" width="1280" />
+<img align="justify" src="https://i.ibb.co/qm7rZYh/Screenshot-2021-07-11-at-6-14-18-PM.png" width="1280" />
