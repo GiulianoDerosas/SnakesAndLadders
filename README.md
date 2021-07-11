@@ -19,12 +19,11 @@ a snake, they go down. However in Snakes and Bladdered there are also tiles whic
 <h2 id="project-files-description"> :floppy_disk: Project Files Description</h2>
 
 <ul>
-  <li><b>controllers</b> - Where all of the routes for a particular page reside.</li>
-  <li><b>db</b> - Sets the schema for the SQL database.</li>
-  <li><b>models</b> - Contains all the classes that were used throughout the project.</li>
-  <li><b>repositories</b> - CRUD functionality lives here.</li>
-  <li><b>static</b> - Has some images and styling - what makes it look so pretty.</li>
-   <li><b>templates</b> - Contains all the HMTL - the stuff you see on the page.</li>
+  <li><b>client > src > components</b> - Where all of the seperate React components reside.</li>
+  <li><b>client > src > containers</b> - You'll find the game logic here.</li>
+  <li><b>client > src > services</b> - Here's where the data is being fetched.</li>
+  <li><b>client > server > db</b> - Seed data with all our fun tasks.</li>
+  <li><b>client > server > helpers</b> - All the routing for the project.</li>
 </ul>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
