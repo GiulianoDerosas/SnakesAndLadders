@@ -1,5 +1,5 @@
 <h1 align="center"> Snakes & Bladdered 🐍🍺</h1>
-<h3 align="center"> A Group project built using the MERN (MongoDB, Express, React, NodeJS) stack to create a browser game..</h3>
+<h3 align="center"> A Group project built using the MERN (MongoDB, Express, React, NodeJS) stack to create a browser game.</h3>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
